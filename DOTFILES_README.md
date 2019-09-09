@@ -16,5 +16,9 @@ git config --local status.showUntrackedFiles no
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ```
 
+#### Using vmd to preview markdown files
+```
+npm install -g vmd
+```
 
 
