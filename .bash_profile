@@ -1,2 +1,2 @@
-export PS1="[@T7 \W]$ \[$(tput sgr0)\]"
+export PS1="[T7@\h \W]$ "
 
