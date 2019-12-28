@@ -369,26 +369,8 @@ you should place your code here."
 
   (setq-default helm-display-function 'helm-default-display-buffer)
 
-  (defun wy-split-window-below ()
-    "Splite window below"
-    (interactive)
-    (split-window-below)
-    (evil-window-increase-height 24)
-    )
+  (load-file "~/.wy.emacs.d/init.el")
 
-  (defun wy-open-eshell ()
-    "Open a new eshell, and add to current layout"
-    (interactive)
-    (eshell 'N)
-    )
-
-  (defun wy-clear-eshell-buffer ()
-    "Clear the eshell buffer."
-    (interactive)
-    (let ((inhibit-read-only t))
-      (erase-buffer)
-      )
-    )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
