@@ -4,6 +4,7 @@
 (defvar wy-explorer-buffer nil)
 (defvar wy-explorer-buffers-not-in-any-project nil)
 (defvar wy-explorer-working-buffer nil)
+(defvar wy-explorer-buffer-hash (make-hash-table :test 'eq))
 
 
 (defvar wy-explorer-lines ())
@@ -59,7 +60,6 @@
   (erase-buffer)
 
   (setq wy-explorer-lines ())
-
   "Initialize global buffer for wy-explorer"
   (setq projects projectile-known-projects)
   (setq wy-explorer-buffers-not-in-any-project
@@ -71,24 +71,31 @@
          'string<)
         )
 
+  (dolist (b (mapcar 'buffer-name (buffer-list)))
+    (puthash b t wy-explorer-buffer-hash)
+    )
+
   (mapcar 'wy-explorer--buffer--display-project projects)
 
   ;;Insert buffers not in any project
-  (push (list (line-number-at-pos) "p" nil) wy-explorer-lines)
-  (insert "Buffers not in any project")
-  (newline)
-  (beginning-of-line)
-  (dolist (b wy-explorer-buffers-not-in-any-project)
-    (unless (string-match-p "*$" b)
-      (push (list (line-number-at-pos) "b" b nil) wy-explorer-lines)
-      (when (equal b wy-explorer-working-buffer)
-        (setq wy-explorer-current-line (line-number-at-pos)))
-      (insert "  ")
-      (insert b)
-      (newline)
-      (beginning-of-line)
+  (when (> (length wy-explorer-buffers-not-in-any-project) 0)
+    (push (list (line-number-at-pos) "p" nil) wy-explorer-lines)
+    (insert "Buffers not in any project")
+    (newline)
+    (beginning-of-line)
+    (dolist (b wy-explorer-buffers-not-in-any-project)
+      (unless (string-match-p "*$" b)
+        (push (list (line-number-at-pos) "b" b nil) wy-explorer-lines)
+        (when (equal b wy-explorer-working-buffer)
+          (setq wy-explorer-current-line (line-number-at-pos)))
+        (insert "  ")
+        (insert b)
+        (newline)
+        (beginning-of-line)
+        )
       )
     )
+
   (goto-line wy-explorer-current-line)
   (read-only-mode)
 
@@ -99,7 +106,9 @@
   "Display project name and it's open buffers in WYExplorer"
 
   (setq project-root (projectile-project-root p))
-  (when project-root
+  (when (and project-root
+             (not (string-equal project-root (expand-file-name "~/")))
+             )
     ;;Insert project name
     (push (list (line-number-at-pos) "p" project-root) wy-explorer-lines)
     (insert (projectile-project-name project-root))
@@ -119,7 +128,8 @@
         (insert b)
         (newline)
         (beginning-of-line)
-        (delete b wy-explorer-buffers-not-in-any-project)
+        (setq wy-explorer-buffers-not-in-any-project
+              (delete b wy-explorer-buffers-not-in-any-project))
         )
       )
     )
@@ -142,6 +152,18 @@
     )
   )
 
+;;Hooks
+(defun wy-explorer-buffer-list-update-hook ()
+  (setq b (buffer-name(current-buffer)))
+  (unless (gethash b wy-explorer-buffer-hash nil)
+    (puthash b t wy-explorer-buffer-hash)
+    (unless (string-match-p "*$" b)
+      (wy-explorer--buffer--get-or-create)
+      )
+    )
+  )
+;;(add-hook 'buffer-list-update-hook 'wy-explorer-buffer-list-update-hook)
+
 (defvar wy-explorer-mode-map nil)
 (setq wy-explorer-mode-map (make-sparse-keymap))
 (define-key wy-explorer-mode-map (kbd "RET")  'wy-explorer-open-file-or-dir)
@@ -155,6 +177,16 @@
 
 (global-set-key (kbd "C-\\") 'wy-explorer-switch-window)
 (global-set-key (kbd "C-]") 'wy-explorer-toggle)
+
+;; (with-eval-after-load 'projectile
+;;   (require 'f)
+;;   (defun wy-explorer-ignore-project (project-root)
+;;     (print project-root)
+;;     (print (expand-file-name "~/"))
+;;     (string-match-p (expand-file-name "~/") project-root)
+;;     )
+;;   (setq projectile-ignored-project-function #'wy-explorer-ignore-project)
+;;   )
 
 ;;(provide 'wy-explorer-mode)
 
