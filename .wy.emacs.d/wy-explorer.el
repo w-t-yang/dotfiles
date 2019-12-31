@@ -109,27 +109,34 @@
   (when (and project-root
              (not (string-equal project-root (expand-file-name "~/")))
              )
-    ;;Insert project name
-    (push (list (line-number-at-pos) "p" project-root) wy-explorer-lines)
-    (insert (projectile-project-name project-root))
-    (newline)
-    (beginning-of-line)
 
     ;;(setq buffers (sort (projectile-project-buffers project-root)) 'string<)
-    (setq buffers (projectile-project-buffers project-root))
+    (setq buffers
+          (remove-if
+           (lambda (b) (string-match-p "*$" b))
+           (mapcar 'buffer-name (projectile-project-buffers project-root))
+           )
+          )
 
-    (dolist (buffer buffers)
-      (setq b (buffer-name buffer))
-      (when (not (string-match-p "^*" b))
-        (push (list (line-number-at-pos) "b" b project-root) wy-explorer-lines)
-        (when (equal b wy-explorer-working-buffer)
-          (setq wy-explorer-current-line (line-number-at-pos)))
-        (insert "  ")
-        (insert b)
-        (newline)
-        (beginning-of-line)
-        (setq wy-explorer-buffers-not-in-any-project
-              (delete b wy-explorer-buffers-not-in-any-project))
+    (when (> (length buffers) 0)
+      ;;Insert project name
+      (push (list (line-number-at-pos) "p" project-root) wy-explorer-lines)
+      (insert (projectile-project-name project-root))
+      (newline)
+      (beginning-of-line)
+
+      (dolist (b buffers)
+        (when (not (string-match-p "^*" b))
+          (push (list (line-number-at-pos) "b" b project-root) wy-explorer-lines)
+          (when (equal b wy-explorer-working-buffer)
+            (setq wy-explorer-current-line (line-number-at-pos)))
+          (insert "  ")
+          (insert b)
+          (newline)
+          (beginning-of-line)
+          (setq wy-explorer-buffers-not-in-any-project
+                (delete b wy-explorer-buffers-not-in-any-project))
+          )
         )
       )
     )
