@@ -49,3 +49,5 @@
   )
 
 (load-file "~/.wy.emacs.d/wy-explorer.el")
+
+;; Disable eshell-prompt-extras epe-git-p, if eshell gets extremely slow
