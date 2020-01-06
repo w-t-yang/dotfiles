@@ -121,6 +121,12 @@
     (when (> (length buffers) 0)
       ;;Insert project name
       (push (list (line-number-at-pos) "p" project-root) wy-explorer-lines)
+      (setq host (nth 1 (split-string project-root ":")))
+      (when host
+        (insert "[")
+        (insert host)
+        (insert "]")
+        )
       (insert (projectile-project-name project-root))
       (newline)
       (beginning-of-line)
