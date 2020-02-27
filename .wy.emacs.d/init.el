@@ -48,4 +48,14 @@
     )
   )
 
-(load-file "~/.wy.emacs.d/wy-explorer.el")
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+(global-set-key (kbd "C-]") 'neotree-toggle)
+(global-set-key (kbd "C-o") 'other-window)
+;;(add-hook 'after-init-hook #'neotree-show)
+;;(add-hook 'kill-emacs-hook 'neotree-hide)
+(setq-default cursor-in-non-selected-windows nil)
+
+(global-set-key (kbd "C-j TAB") 'helm-projectile-switch-to-buffer)
+
+;;(load-file "~/.wy.emacs.d/wy-explorer.el")

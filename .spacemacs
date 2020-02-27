@@ -31,17 +31,14 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-
+     ruby
+     java
      javascript
      python
      yaml
      html
      go
+     emacs-lisp
 
      ess ;; Emacs Speaks Statistics
 
@@ -61,8 +58,7 @@ values."
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
                       )
-     ;; better-defaults
-     emacs-lisp
+     better-defaults
      git
 
      (org :variables org-enable-github-support t)
@@ -82,7 +78,14 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages
+   '(
+     all-the-icons
+     ;; treemacs
+     ;; treemacs-evil
+     ;; treemacs-projectile
+     ;; treemacs-icons-dired
+     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -341,10 +344,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'wave)
-  ;;(global-company-mode '(not eshell-mode))
   (spacemacs|disable-company eshell-mode)
   (spacemacs|enable-auto-complete perl-mode)
-  ;;(setq company-global-modes '(not eshell-mode))
 
   (global-set-key (kbd "C-<tab>") 'next-buffer)
   (global-set-key (kbd "C-`") 'previous-buffer)
@@ -366,6 +367,7 @@ you should place your code here."
   (setq org-bullets-bullet-list '("✿" "✸" "◉" "○" "◆"))
   (setq org-list-demote-modify-bullet '(("+" . "-") ("-" . "+") ("*" . "+")))
   (setq org-list-allow-alphabetical t)
+  (setq org-export-with-toc nil)
 
   (setq-default helm-display-function 'helm-default-display-buffer)
 
@@ -382,7 +384,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (go-guru go-eldoc company-go go-mode ess-smart-equals ess-R-data-view ctable ess julia-mode vmd-mode ox-gfm org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help \"cyberpunk\"-theme cyberpunk-theme flyspell-correct-helm flycheck-pos-tip flyspell-correct flycheck auto-dictionary company-quickhelp pos-tip livid-mode skewer-mode js2-refactor multiple-cursors web-beautify simple-httpd json-mode json-snatcher json-reformat js2-mode js-doc company-tern tern coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic yaml-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data mmm-mode markdown-toc markdown-mode gh-md orgit magit-gitflow magit-popup helm-company git-timemachine evil-magit magit git-commit company-statistics ac-ispell unfill smeargle mwim helm-gitignore helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode transient git-messenger git-link fuzzy with-editor company auto-yasnippet yasnippet auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async evil-unimpaired f s dash))))
+    (treemacs-projectile treemacs-icons-dired treemacs-evil treemacs ht pfuture company-emacs-eclim eclim memoize all-the-icons bundler rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby inf-ruby go-guru go-eldoc company-go go-mode ess-smart-equals ess-R-data-view ctable ess julia-mode vmd-mode ox-gfm org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help \"cyberpunk\"-theme cyberpunk-theme flyspell-correct-helm flycheck-pos-tip flyspell-correct flycheck auto-dictionary company-quickhelp pos-tip livid-mode skewer-mode js2-refactor multiple-cursors web-beautify simple-httpd json-mode json-snatcher json-reformat js2-mode js-doc company-tern tern coffee-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic yaml-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data mmm-mode markdown-toc markdown-mode gh-md orgit magit-gitflow magit-popup helm-company git-timemachine evil-magit magit git-commit company-statistics ac-ispell unfill smeargle mwim helm-gitignore helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode transient git-messenger git-link fuzzy with-editor company auto-yasnippet yasnippet auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async evil-unimpaired f s dash))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
