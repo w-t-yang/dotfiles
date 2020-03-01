@@ -48,15 +48,21 @@
     )
   )
 
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+;;(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-(global-set-key (kbd "C-]") 'neotree-toggle)
+(global-set-key (kbd "C-<tab>") 'centaur-tabs-forward-tab)
+(global-set-key (kbd "C-S-<tab>") 'centaur-tabs-backward-tab)
 (global-set-key (kbd "C-o") 'other-window)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "M-p") 'backward-paragraph)
+;;(global-set-key (kbd "C-]") 'neotree-toggle)
+(global-set-key (kbd "C-]") 'treemacs)
+;;(global-set-key (kbd "C-<escape>") 'eshell)
+
 ;;(add-hook 'after-init-hook #'neotree-show)
 ;;(add-hook 'kill-emacs-hook 'neotree-hide)
-(setq-default cursor-in-non-selected-windows nil)
-
-(global-set-key (kbd "C-j TAB") 'helm-projectile-switch-to-buffer)
+;;(setq-default cursor-in-non-selected-windows nil)
+;;(global-set-key (kbd "C-j TAB") 'helm-projectile-switch-to-buffer)
 
 ;;(load-file "~/.wy.emacs.d/wy-explorer.el")
 
