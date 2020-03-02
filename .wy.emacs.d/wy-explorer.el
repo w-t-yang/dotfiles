@@ -65,7 +65,12 @@
   (setq wy-explorer-buffers-not-in-any-project
         (sort
          (remove-if
-          (lambda (b) (string-match-p "*$" b))
+          (lambda (b)
+            (and
+             (string-match-p "*$" b)
+             (not (string-match-p "^*eshell" b))
+             )
+            )
           (mapcar 'buffer-name (buffer-list))
           )
          'string<)
@@ -84,7 +89,7 @@
     (newline)
     (beginning-of-line)
     (dolist (b wy-explorer-buffers-not-in-any-project)
-      (unless (string-match-p "*$" b)
+      ;;(unless (string-match-p "*$" b)
         (push (list (line-number-at-pos) "b" b nil) wy-explorer-lines)
         (when (equal b wy-explorer-working-buffer)
           (setq wy-explorer-current-line (line-number-at-pos)))
@@ -92,7 +97,7 @@
         (insert b)
         (newline)
         (beginning-of-line)
-        )
+        ;;)
       )
     )
 
@@ -113,7 +118,12 @@
     ;;(setq buffers (sort (projectile-project-buffers project-root)) 'string<)
     (setq buffers
           (remove-if
-           (lambda (b) (string-match-p "*$" b))
+           (lambda (b)
+             (and
+              (string-match-p "*$" b)
+              (not (string-match-p "^*eshell" b))
+              )
+             )
            (mapcar 'buffer-name (projectile-project-buffers project-root))
            )
           )
@@ -132,7 +142,7 @@
       (beginning-of-line)
 
       (dolist (b buffers)
-        (when (not (string-match-p "^*" b))
+        ;;(when (not (string-match-p "^*" b))
           (push (list (line-number-at-pos) "b" b project-root) wy-explorer-lines)
           (when (equal b wy-explorer-working-buffer)
             (setq wy-explorer-current-line (line-number-at-pos)))
@@ -142,7 +152,7 @@
           (beginning-of-line)
           (setq wy-explorer-buffers-not-in-any-project
                 (delete b wy-explorer-buffers-not-in-any-project))
-          )
+          ;;)
         )
       )
     )

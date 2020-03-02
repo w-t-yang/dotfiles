@@ -34,6 +34,11 @@
 (global-set-key (kbd "M-<right>") 'wy-increase-window-width)
 (global-set-key (kbd "M-<left>") 'wy-decrease-window-width)
 
+;;(add-hook 'java-mode-hook (lambda ()
+;;                            (setq c-basic-offset 2
+;;                                  ;tab-width 2
+;;                                  )))
+
 (defun wy-open-eshell ()
   "Open a new eshell, and add to current layout"
   (interactive)
@@ -66,3 +71,10 @@
 
 ;;(load-file "~/.wy.emacs.d/wy-explorer.el")
 
+;;(advice-add 'helm-ff-filter-candidate-one-by-one
+;;            :around (lambda (fcn file)
+;;                      (unless (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file)
+;;                        (funcall fcn file))))
+
+
+;; Disable eshell-prompt-extras epe-git-p, if eshell gets extremely slow

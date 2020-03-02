@@ -32,7 +32,7 @@ values."
    dotspacemacs-configuration-layers
    '(
      ruby
-     java
+     (java :variables java-backend 'lsp)
      javascript
      python
      yaml
