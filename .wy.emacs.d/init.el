@@ -52,7 +52,6 @@
   (find-file (format "/ssh:%s:/usr/local/git_tree/main" server))
   )
 
-
 ;; -- Bindings --
 (load-file "~/.wy.emacs.d/emacs-bindings.el")
 (global-set-key (kbd "<f13>") 'toggle-frame-fullscreen)
@@ -88,6 +87,8 @@
 
 ;; -- Variables --
 ;;(setq-default cursor-in-non-selected-windows nil)
+(setq org-export-with-toc nil)
+;;(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (setq doom-theme 'doom-city-lights)
 ;;(setq doom-theme 'doom-material)
 ;;(setq doom-theme 'doom-moonlight)
