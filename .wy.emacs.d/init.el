@@ -53,7 +53,7 @@
   )
 
 ;; -- Bindings --
-(load-file "~/.wy.emacs.d/emacs-bindings.el")
+;;(load-file "~/.wy.emacs.d/emacs-bindings.el")
 (global-set-key (kbd "<f13>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "M-<up>") 'wy-increase-window-height)
 (global-set-key (kbd "M-<down>") 'wy-decrease-window-height)
