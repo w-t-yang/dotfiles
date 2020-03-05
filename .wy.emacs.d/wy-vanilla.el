@@ -5,8 +5,9 @@
 ;;; Code:
 
 (require 'init-elpa)
+(load-file "~/.wy.emacs.d/wy-functions.el")
 
-;; Themes
+;;; Themes
 (require-package 'zenburn-theme)
 (load-theme 'zenburn t)
 
@@ -14,10 +15,23 @@
 (set-face-attribute 'default nil :family "Courier New" :height 160)
 
 
-;; Search
-(setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy)))
+;;; Search
+;; For fuzzy search, manually enable it everytime
+;; by calling ivy-toggle-fuzzy
+;; (setq ivy-re-builders-alist
+;;       '((t . ivy--regex-fuzzy)))
 
+;; Remote
+;; (setq tramp-verbose 6)
+(require 'tramp)
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+(setq tramp-default-method "ssh")
+(setq tramp-completion-reread-directory-timeout nil)
+(setq tramp-auto-save-directory "~/tmp/tramp/")
+(setq tramp-chunksize 2000)
+(setq remote-file-name-inhibit-cache nil)
+
+;; Project
 
 ;; Binding Map
 ;; (setq keys '("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"))
@@ -52,6 +66,7 @@
 ;;  C-t    transpose-chars
 ;;  C-u    universal-argument
 ;;  C-v    cua-scroll-up
+(global-set-key (kbd "C-v") 'scroll-up-half)
 ;;  C-w    whole-line-or-region-kill-region
 ;;  C-x    Control-X-prefix
 ;;  C-y    whole-line-or-region-yank
@@ -65,6 +80,7 @@
 ;;  C-{    paredit-backward-barf-sexp
 ;;  C-}    paredit-forward-barf-sexp
 ;;  C-\    toggle-input-method
+(global-set-key (kbd "C-\\") 'wy-open-remote-root)
 ;;  C-|    undefined
 ;;  C-;    avy-goto-char-timer
 ;;  C-'    undefined
@@ -99,6 +115,7 @@
 ;;  M-t    transpose-words
 ;;  M-u    upcase-word
 ;;  M-v    cua-scroll-down
+(global-set-key (kbd "M-v") 'scroll-down-half)
 ;;  M-w    whole-line-or-region-kill-ring-save
 ;;  M-x    M-x
 ;;  M-y    cua-paste-pop
