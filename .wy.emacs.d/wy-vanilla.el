@@ -138,6 +138,7 @@
 ;;(setq lsp-keymap-prefix "M-l")
 (require-package 'lsp-mode)
 (require-package 'lsp-ui)
+(setq lsp-ui-doc-enable nil)
 (require-package 'company-lsp)
 ;;(require-package 'lsp-treemacs)
 (require-package 'lsp-ivy)
