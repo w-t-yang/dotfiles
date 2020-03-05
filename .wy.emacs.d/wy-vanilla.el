@@ -46,101 +46,64 @@
 ;;     )
 ;;   )
 
-;;  C-a    move-beginning-of-line
-;;  C-b    backward-char
-;;  C-c    prefix
-;;  C-d    paredit-forward-delete
-;;  C-e    move-end-of-line
-;;  C-f    forward-char
-;;  C-g    keyboard-quit
-;;  C-h    help-commandTAB runs the command ielm-tab
-;;  C-j    paredit-newline
-;;  C-k    paredit-kill
-;;  C-l    recenter-top-bottomRET runs the command ielm-return
-;;  C-n    next-line
-;;  C-o    sanityinc/open-line-with-reindent
-;;  C-p    previous-line
-;;  C-q    quoted-insert
-;;  C-r    isearch-backward
-;;  C-s    isearch-forward
-;;  C-t    transpose-chars
-;;  C-u    universal-argument
-;;  C-v    cua-scroll-up
+;;  C-a    move-beginning-of-line            M-a    backward-sentence
+(global-set-key (kbd "M-a") 'backward-paragraph)
+;;  C-b    backward-char                     M-b    backward-word
+;;  C-c    prefix                            M-c    capitalize-word
+;;  C-d    paredit-forward-delete            M-d    paredit-forward-kill-word
+;;  C-e    move-end-of-line                  M-e    forward-sentence
+(global-set-key (kbd "M-e") 'forward-paragraph)
+;;  C-f    forward-char                      M-f    forward-word
+;;  C-g    keyboard-quit                     M-g    go-to
+
+;;  C-h    help-command                      M-h    ns-do-hide-emacs
+
+;;  C-i    tab                               M-i    tab-to-tab-stop
+;;  C-j    paredit-newline                   M-j    indent-new-comment-line
+;;  C-k    paredit-kill                      M-k    kill-sentence
+;;  C-l    recenter-top-bottom               M-l    downcase-word
+;;  C-m    enter                             M-m    back-to-indentation
+;;  C-n    next-line                         M-n    comint-next-input
+;;  C-o    sanityinc/open-line-with-reindent M-o    facemenu-keymap
+
+;;  C-p    previous-line                     M-p    comint-previous-input
+;;  C-q    quoted-insert                     M-q    paredit-reindent-defun
+;;  C-r    isearch-backward                  M-r    paredit-raise-sexp
+;;  C-s    isearch-forward                   M-s    search
+
+;;  C-t    transpose-chars                   M-t    transpose-words
+;;  C-u    universal-argument                M-u    upcase-word
+;;  C-v    cua-scroll-up                     M-v    cua-scroll-down
 (global-set-key (kbd "C-v") 'scroll-up-half)
-;;  C-w    whole-line-or-region-kill-region
-;;  C-x    Control-X-prefix
-;;  C-y    whole-line-or-region-yank
-;;  C-z    sanityinc/maybe-suspend-frame
-
-;;  C-TAB  undefined
-;;  C-`    undefined
-;;  C--    negative-argument
-;;  C-=    expand-region
-;;  C-]    abort-recursive-edit
-;;  C-{    paredit-backward-barf-sexp
-;;  C-}    paredit-forward-barf-sexp
-;;  C-\    toggle-input-method
-(global-set-key (kbd "C-\\") 'wy-open-remote-root)
-;;  C-|    undefined
-;;  C-;    avy-goto-char-timer
-;;  C-'    undefined
-;;  C-:    undefined
-;;  C-,    undefined
-;;  C-.    cua-set-mark
-;;  C-<    mc/mark-previous-like-this
-;;  C->    mc/mark-next-like-this
-;;  C-/    undo
-;;  C-?    undefined
-;;  C-S-Backspace kill-whole-line
-
-;;  M-a    backward-sentence
-;;  M-b    backward-word
-;;  M-c    capitalize-word
-;;  M-d    paredit-forward-kill-word
-;;  M-e    forward-sentence
-;;  M-f    forward-word
-;;  M-g    go-to
-;;  M-h    ns-do-hide-emacs
-;;  M-i    tab-to-tab-stop
-;;  M-j    indent-new-comment-line
-;;  M-k    kill-sentence
-;;  M-l    downcase-word
-;;  M-m    back-to-indentation
-;;  M-n    comint-next-input
-;;  M-o    facemenu-keymap
-;;  M-p    comint-previous-input
-;;  M-q    paredit-reindent-defun
-;;  M-r    paredit-raise-sexp
-;;  M-s    search
-;;  M-t    transpose-words
-;;  M-u    upcase-word
-;;  M-v    cua-scroll-down
 (global-set-key (kbd "M-v") 'scroll-down-half)
-;;  M-w    whole-line-or-region-kill-ring-save
-;;  M-x    M-x
-;;  M-y    cua-paste-pop
-;;  M-z    zap-to-ch
-
-;;  M-TAB  is undefined
-;;  M-`    ns-next-frame
-;;  M--    negative-argument
-;;  M-=    count-words-region
-;;  M-[]   undefined
-;;  M-{    backward-paragraph
-;;  M-}    forward-paragraph
-;;  M-\    delete-horizontal-space
-;;  M-|    shell-command-on-region
-;;  M-;    paredit-comment-dwim
-;;  M-'    abbrev-prefix-mark
-;;  M-:    pp-eval-expression
-;;  M-,    pop-tag-mark
-;;  M-.    elisp-slime-nav-find-elisp-thing-at-point
-;;  M-<    beginning-of-buffer
-;;  M->    end-of-buffer
-;;  M-/    company-complete
-;;  M-?    sanityinc/counsel-search-project
+;;  C-w    whole-line-or-region-kill-region  M-w    whole-line-or-region-kill-ring-save
+;;  C-x    Control-X-prefix                  M-x    M-x
+;;  C-y    whole-line-or-region-yank         M-y    cua-paste-pop
+;;  C-z    sanityinc/maybe-suspend-frame     M-z    zap-to-ch
 
 
+
+;;  C-TAB  undefined                         M-TAB  is undefined
+;;  C-`    undefined                         M-`    ns-next-frame
+;;  C--    negative-argument                 M--    negative-argument
+;;  C-=    expand-region                     M-=    count-words-region
+;;  C-[]   esc;abort-recursive-edit          M-[]   undefined
+;;  C-{    paredit-backward-barf-sexp        M-{    backward-paragraph
+;;  C-}    paredit-forward-barf-sexp         M-}    forward-paragraph
+;;  C-\    toggle-input-method               M-\    delete-horizontal-space (switch input method)
+(global-set-key (kbd "C-\\") 'wy-open-remote-root)
+;;  C-|    undefined                         M-|    shell-command-on-region
+;;  C-;    avy-goto-char-timer               M-;    paredit-comment-dwim
+;;  C-'    undefined                         M-'    abbrev-prefix-mark
+;;  C-:    undefined                         M-:    pp-eval-expression
+;;  C-,    undefined                         M-,    pop-tag-mark
+;;  C-.    cua-set-mark                      M-.    elisp-slime-nav-find-elisp-thing-at-point
+;;  C-<    mc/mark-previous-like-this        M-<    beginning-of-buffer
+;;  C->    mc/mark-next-like-this            M->    end-of-buffer
+;;  C-/    undo                              M-/    company-complete
+;;  C-?    undefined                         M-?    sanityinc/counsel-search-project
+
+;;  C-S-Backspace kill-whole-line
 
 ;;  M-A    is undefined
 ;;  M-B    is undefined
@@ -168,6 +131,62 @@
 ;;  M-X    is undefined
 ;;  M-Y    browse-kill-ring
 ;;  M-Z    zap-up-to-char
+
+(global-set-key (kbd "RET") #'newline-and-indent)
+
+;;; lsp
+;;(setq lsp-keymap-prefix "M-l")
+(require-package 'lsp-mode)
+(require-package 'lsp-ui)
+(require-package 'company-lsp)
+;;(require-package 'lsp-treemacs)
+(require-package 'lsp-ivy)
+;;(require-package 'dap-mode)
+(require-package 'yasnippet)
+
+;;(require 'lsp-mode)
+
+;; Swift
+;;(require-package 'lsp-sourcekit)
+
+;; Java
+(require-package 'lsp-java)
+;;(require 'lsp-java)
+(add-hook 'java-mode-hook #'lsp)
+(add-hook 'java-mode-hook (lambda ()
+                            (setq c-basic-offset 2
+                                  tab-width 2
+                                  )))
+
+;; (require-package 'meghanada)
+;; (require 'meghanada)
+;; (add-hook 'java-mode-hook
+;;           (lambda ()
+;;             ;; meghanada-mode on
+;;             (meghanada-mode t)
+;;             ;; enable telemetry
+;;             (meghanada-telemetry-enable t)
+;;             (flycheck-mode +1)
+;;             (setq c-basic-offset 2)
+;;             ;; use code format
+;;             (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
+;; (cond
+;;  ((eq system-type 'windows-nt)
+;;   (setq meghanada-java-path (expand-file-name "bin/java.exe" (getenv "JAVA_HOME")))
+;;   (setq meghanada-maven-path "mvn.cmd"))
+;;  (t
+;;   (setq meghanada-java-path "java")
+;;   (setq meghanada-maven-path "mvn")))
+
+
+(setq company-minimum-prefix-length 1 company-idle-delay 0.0) ;; default is 0.2
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+(setq lsp-idle-delay 0.500)
+(setq lsp-inhibit-message t)
+
+;;; Performance
+(setq desktop-restore-eager 7)
 
 (provide 'wy-vanilla)
 
