@@ -21,8 +21,9 @@
 ;; (setq ivy-re-builders-alist
 ;;       '((t . ivy--regex-fuzzy)))
 
-;; Remote
+;;; Remote
 ;; (setq tramp-verbose 6)
+(setq ivy-rich-parse-remote-buffer nil)
 (require 'tramp)
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 (setq tramp-default-method "ssh")
@@ -31,9 +32,11 @@
 (setq tramp-chunksize 2000)
 (setq remote-file-name-inhibit-cache nil)
 
-;; Project
 
-;; Binding Map
+;;; Project
+
+
+;;; Binding Map
 ;; (setq keys '("a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"))
 ;; (progn
 ;;   (setq keys '("<tab>" "`" "-" "=" "[" "]" "{" "}" "\\" "|" ";" "'" ":" "," "." "<" ">" "/" "?"))
@@ -84,6 +87,7 @@
 
 
 ;;  C-TAB  undefined                         M-TAB  is undefined
+(global-set-key (kbd "C-<tab>") 'projectile-switch-to-buffer)
 ;;  C-`    undefined                         M-`    ns-next-frame
 ;;  C--    negative-argument                 M--    negative-argument
 ;;  C-=    expand-region                     M-=    count-words-region
@@ -135,6 +139,10 @@
 (global-set-key (kbd "RET") #'newline-and-indent)
 
 ;;; lsp
+
+;; when lsp is not enable/available, use dumb-jump for "jump to definition"
+(require-package 'dumb-jump)
+
 ;;(setq lsp-keymap-prefix "M-l")
 (require-package 'lsp-mode)
 (require-package 'lsp-ui)
@@ -151,16 +159,14 @@
 ;;(require-package 'lsp-sourcekit)
 
 ;; Java
-(require-package 'lsp-java)
-;;(require 'lsp-java)
-(add-hook 'java-mode-hook #'lsp)
+;; (require-package 'lsp-java)
+;; (add-hook 'java-mode-hook #'lsp)
 (add-hook 'java-mode-hook (lambda ()
                             (setq c-basic-offset 2
                                   tab-width 2
                                   )))
 
 ;; (require-package 'meghanada)
-;; (require 'meghanada)
 ;; (add-hook 'java-mode-hook
 ;;           (lambda ()
 ;;             ;; meghanada-mode on

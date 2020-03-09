@@ -8,7 +8,7 @@
 (defun wy-open-remote-root ( server )
   "Open the root folder on a remote SERVER."
   (interactive "sEnter the server name: ")
-  (find-file (format "/ssh:%s:/usr/local/git_tree/main" server))
+  (find-file (format "/ssh:%s:/usr/local/git_tree" server))
   )
 
 (defun window-half-height ()
