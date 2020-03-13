@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(defun wy-open-remote-root ( server )
+(defun wy/open-remote-root ( server )
   "Open the root folder on a remote SERVER."
   (interactive "sEnter the server name: ")
   (find-file (format "/ssh:%s:/usr/local/git_tree" server))
@@ -29,5 +29,14 @@
   "Scroll half down."
   (interactive)
   (cua-scroll-down (window-half-height)))
+
+(defun wy/toggle-highlighting-word-at-point ()
+  "Highlight or unhighlight the word where cursor lies."
+  (interactive)
+  (if hi-lock-interactive-patterns
+      (unhighlight-regexp (car (car hi-lock-interactive-patterns)))
+    (highlight-symbol-at-point))
+  )
+
 
 ;;; wy-functions.el ends here

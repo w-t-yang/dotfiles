@@ -10,6 +10,11 @@
 ;;; Themes
 (require-package 'zenburn-theme)
 (load-theme 'zenburn t)
+(require-package 'nyan-mode)
+;;(setq nyan-animate-nyancat t)
+;;(setq nyan-wavy-trail t)
+;;(setq nyan-animation-frame-interval 0.1)
+(nyan-mode t)
 
 ;;(add-to-list 'default-frame-alist '(font . FONT ))
 (set-face-attribute 'default nil :family "Courier New" :height 160)
@@ -18,8 +23,8 @@
 ;;; Search
 ;; For fuzzy search, manually enable it everytime
 ;; by calling ivy-toggle-fuzzy
-;; (setq ivy-re-builders-alist
-;;       '((t . ivy--regex-fuzzy)))
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-fuzzy)))
 
 ;;; Remote
 ;; (setq tramp-verbose 6)
@@ -58,22 +63,28 @@
 (global-set-key (kbd "M-e") 'forward-paragraph)
 ;;  C-f    forward-char                      M-f    forward-word
 ;;  C-g    keyboard-quit                     M-g    go-to
-
+(global-set-key (kbd "M-g l") 'go-to-line)
+(global-set-key (kbd "M-g d") 'lsp-find-definition)
+(global-set-key (kbd "M-g i") 'lsp-find-implementation)
+(global-set-key (kbd "M-g b") 'dumb-jump-back)
 ;;  C-h    help-command                      M-h    ns-do-hide-emacs
 
 ;;  C-i    tab                               M-i    tab-to-tab-stop
 ;;  C-j    paredit-newline                   M-j    indent-new-comment-line
+(global-set-key (kbd "C-j") 'dumb-jump-go)
 ;;  C-k    paredit-kill                      M-k    kill-sentence
 ;;  C-l    recenter-top-bottom               M-l    downcase-word
 ;;  C-m    enter                             M-m    back-to-indentation
 ;;  C-n    next-line                         M-n    comint-next-input
 ;;  C-o    sanityinc/open-line-with-reindent M-o    facemenu-keymap
-
+(global-set-key (kbd "M-o") 'switch-window)
+(global-set-key (kbd "M-0") 'delete-window)
 ;;  C-p    previous-line                     M-p    comint-previous-input
 ;;  C-q    quoted-insert                     M-q    paredit-reindent-defun
 ;;  C-r    isearch-backward                  M-r    paredit-raise-sexp
 ;;  C-s    isearch-forward                   M-s    search
-
+(global-set-key (kbd "M-s g") 'dumb-jump-go)
+(global-set-key (kbd "M-s b") 'dumb-jump-back)
 ;;  C-t    transpose-chars                   M-t    transpose-words
 ;;  C-u    universal-argument                M-u    upcase-word
 ;;  C-v    cua-scroll-up                     M-v    cua-scroll-down
@@ -95,7 +106,7 @@
 ;;  C-{    paredit-backward-barf-sexp        M-{    backward-paragraph
 ;;  C-}    paredit-forward-barf-sexp         M-}    forward-paragraph
 ;;  C-\    toggle-input-method               M-\    delete-horizontal-space (switch input method)
-(global-set-key (kbd "C-\\") 'wy-open-remote-root)
+(global-set-key (kbd "C-\\") 'wy/open-remote-root)
 ;;  C-|    undefined                         M-|    shell-command-on-region
 ;;  C-;    avy-goto-char-timer               M-;    paredit-comment-dwim
 ;;  C-'    undefined                         M-'    abbrev-prefix-mark
@@ -159,12 +170,25 @@
 ;;(require-package 'lsp-sourcekit)
 
 ;; Java
-;; (require-package 'lsp-java)
+
+;; Install via melpa
+;;(require-package 'lsp-java)
+;; end of install via melpa
+
+;; Install manually
+;;(load-file "~/.emacs.d/elpa-26.3/lsp-java/lsp-java.el")
+;;(require 'lsp-java)
+;; end of install manually
+
 ;; (add-hook 'java-mode-hook #'lsp)
-(add-hook 'java-mode-hook (lambda ()
-                            (setq c-basic-offset 2
-                                  tab-width 2
-                                  )))
+;; (add-hook 'java-mode-hook (lambda ()
+;;                             (setq c-basic-offset 2
+;;                                   tab-width 2
+;;                                   )))
+
+
+;;(setq js-indent-level 4)
+;;(setq js2-basic-offset 2)
 
 ;; (require-package 'meghanada)
 ;; (add-hook 'java-mode-hook
