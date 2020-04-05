@@ -6,10 +6,12 @@
 
 (require 'init-elpa)
 (load-file "~/.wy.emacs.d/wy-functions.el")
+(load-file "~/.wy.emacs.d/wy-explorer.el")
+(load-file "~/.wy.emacs.d/wy-org-settings.el")
 
 ;;; Themes
 (require-package 'zenburn-theme)
-(load-theme 'zenburn t)
+(load-theme 'nord t)
 (require-package 'nyan-mode)
 ;;(setq nyan-animate-nyancat t)
 ;;(setq nyan-wavy-trail t)
@@ -17,14 +19,14 @@
 (nyan-mode t)
 
 ;;(add-to-list 'default-frame-alist '(font . FONT ))
-(set-face-attribute 'default nil :family "Courier New" :height 160)
+(set-face-attribute 'default nil :family "Source Code Pro" :height 150)
 
 
 ;;; Search
 ;; For fuzzy search, manually enable it everytime
 ;; by calling ivy-toggle-fuzzy
-(setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy)))
+;; (setq ivy-re-builders-alist
+;;       '((t . ivy--regex-fuzzy)))
 
 ;;; Remote
 ;; (setq tramp-verbose 6)
@@ -36,7 +38,6 @@
 (setq tramp-auto-save-directory "~/tmp/tramp/")
 (setq tramp-chunksize 2000)
 (setq remote-file-name-inhibit-cache nil)
-
 
 ;;; Project
 
@@ -103,6 +104,7 @@
 ;;  C--    negative-argument                 M--    negative-argument
 ;;  C-=    expand-region                     M-=    count-words-region
 ;;  C-[]   esc;abort-recursive-edit          M-[]   undefined
+(global-set-key (kbd "C-]") 'wy-explorer-toggle)
 ;;  C-{    paredit-backward-barf-sexp        M-{    backward-paragraph
 ;;  C-}    paredit-forward-barf-sexp         M-}    forward-paragraph
 ;;  C-\    toggle-input-method               M-\    delete-horizontal-space (switch input method)
@@ -147,7 +149,8 @@
 ;;  M-Y    browse-kill-ring
 ;;  M-Z    zap-up-to-char
 
-(global-set-key (kbd "RET") #'newline-and-indent)
+;; (global-set-key (kbd "RET") 'newline-and-indent)
+
 
 ;;; lsp
 
