@@ -21,4 +21,9 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 npm install -g vmd
 ```
 
+#### Dependencies
+- https://github.com/arcticicestudio/nord-dircolors.git
+- https://github.com/arcticicestudio/nord-tmux.git
+- https://github.com/arcticicestudio/nord-terminal-app.git
+- https://github.com/adobe-fonts/source-code-pro.git
 
