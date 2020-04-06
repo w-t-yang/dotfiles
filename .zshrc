@@ -8,3 +8,6 @@ eval `gdircolors ~/.dir_colors`
 alias ls='gls --color=always'
 alias dir='gdir --color=auto'
 alias grep='grep --color=auto'
+
+alias ta="tmux attach"
+alias tl="tmux list-sessions"
