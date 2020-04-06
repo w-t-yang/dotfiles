@@ -28,15 +28,30 @@
 (setq org-capture-templates
       '(
         ("t" "todo" entry
-         (file+headline "~/org/todo.org" "Upcomming Tasks")
+         (file+headline "~/org-files/todo.org" "Upcomming Tasks")
          "
-* TODO %?
+* TODO %? :UNCATTED:
   %U
   Link: %a"
          :clock-resume t)
 
+        ("e" "emacs todo" entry
+         (file+headline "~/org-files/todo.org" "To Learn More About Emacs")
+         "
+* TODO %? :EMACS:
+  %U
+  Link: %a"
+         :clock-resume t)
+
+        ("w" "work todo" entry
+         (file+olp+datetree "~/org-files/work.org")
+         "
+* TODO %? :WORK:
+  %U"
+         :clock-resume t)
+
         ("n" "note" entry
-         (file+datetree "~/org/note.org")
+         (file+olp+datetree "~/org-files/note.org")
          "
 * %? :NOTE:
   %U
@@ -61,7 +76,7 @@
   (delete-other-windows)
   )
 
-
+(global-set-key (kbd "M-c") 'org-capture)
 (global-set-key (kbd "C-*") 'make-capture-frame)
 
 (provide 'wy-org-settings)

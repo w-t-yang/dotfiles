@@ -27,3 +27,6 @@ npm install -g vmd
 - https://github.com/arcticicestudio/nord-terminal-app.git
 - https://github.com/adobe-fonts/source-code-pro.git
 
+#### Miscennanious
+- Map 'Capslock' to 'Control'
+- For terminal.app, go to 'Preference->Profiles->Keyboard', check "Using Option as Meta"

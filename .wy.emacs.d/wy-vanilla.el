@@ -4,6 +4,8 @@
 
 ;;; Code:
 
+(setq mac-option-modifier 'meta)
+
 (require 'init-elpa)
 (load-file "~/.wy.emacs.d/wy-functions.el")
 (load-file "~/.wy.emacs.d/wy-explorer.el")
@@ -58,16 +60,18 @@
 ;;  C-a    move-beginning-of-line            M-a    backward-sentence
 (global-set-key (kbd "M-a") 'backward-paragraph)
 ;;  C-b    backward-char                     M-b    backward-word
-;;  C-c    prefix                            M-c    capitalize-word
+;;  C-c    prefix                            M-c    capitalize-word -> org-orgcapture
 ;;  C-d    paredit-forward-delete            M-d    paredit-forward-kill-word
 ;;  C-e    move-end-of-line                  M-e    forward-sentence
 (global-set-key (kbd "M-e") 'forward-paragraph)
 ;;  C-f    forward-char                      M-f    forward-word
 ;;  C-g    keyboard-quit                     M-g    go-to
-(global-set-key (kbd "M-g l") 'go-to-line)
+(global-set-key (kbd "M-g l") 'goto-line)
 (global-set-key (kbd "M-g d") 'lsp-find-definition)
 (global-set-key (kbd "M-g i") 'lsp-find-implementation)
 (global-set-key (kbd "M-g b") 'dumb-jump-back)
+(global-set-key (kbd "M-g g") 'dumb-jump-go)
+(global-set-key (kbd "M-g w") 'browse-url)
 ;;  C-h    help-command                      M-h    ns-do-hide-emacs
 
 ;;  C-i    tab                               M-i    tab-to-tab-stop
@@ -84,9 +88,8 @@
 ;;  C-q    quoted-insert                     M-q    paredit-reindent-defun
 ;;  C-r    isearch-backward                  M-r    paredit-raise-sexp
 ;;  C-s    isearch-forward                   M-s    search
-(global-set-key (kbd "M-s g") 'dumb-jump-go)
-(global-set-key (kbd "M-s b") 'dumb-jump-back)
 ;;  C-t    transpose-chars                   M-t    transpose-words
+(global-set-key (kbd "M-t") 'cycle-spacing)
 ;;  C-u    universal-argument                M-u    upcase-word
 ;;  C-v    cua-scroll-up                     M-v    cua-scroll-down
 (global-set-key (kbd "C-v") 'scroll-up-half)
