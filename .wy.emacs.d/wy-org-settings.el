@@ -28,7 +28,7 @@
 (setq org-capture-templates
       '(
         ("t" "todo" entry
-         (file+headline "~/org-files/todo.org" "Upcomming Tasks")
+         (file+headline "~/orgfiles/todo.org" "Upcomming Tasks")
          "
 * TODO %? :UNCATTED:
   %U
@@ -36,7 +36,7 @@
          :clock-resume t)
 
         ("e" "emacs todo" entry
-         (file+headline "~/org-files/todo.org" "To Learn More About Emacs")
+         (file+headline "~/orgfiles/todo.org" "To Learn More About Emacs")
          "
 * TODO %? :EMACS:
   %U
@@ -44,14 +44,14 @@
          :clock-resume t)
 
         ("w" "work todo" entry
-         (file+olp+datetree "~/org-files/work.org")
+         (file+olp+datetree "~/orgfiles/work.org")
          "
 * TODO %? :WORK:
   %U"
          :clock-resume t)
 
         ("n" "note" entry
-         (file+olp+datetree "~/org-files/note.org")
+         (file+olp+datetree "~/orgfiles/note.org")
          "
 * %? :NOTE:
   %U
