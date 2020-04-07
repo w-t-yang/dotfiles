@@ -21,14 +21,23 @@
 (nyan-mode t)
 
 ;;(add-to-list 'default-frame-alist '(font . FONT ))
-(set-face-attribute 'default nil :family "Source Code Pro" :height 150)
+(set-face-attribute 'default nil :family "Source Code Pro" :height 160)
 
+(require-package 'treemacs)
+;;(require-package 'treemacs-icons-dired)
+(require-package 'treemacs-persp)
+(require-package 'treemacs-projectile)
+(setq treemacs-width 50
+      treemacs-indentation 1
+      treemacs-no-png-images t
+      )
 
 ;;; Search
 ;; For fuzzy search, manually enable it everytime
 ;; by calling ivy-toggle-fuzzy
 ;; (setq ivy-re-builders-alist
 ;;       '((t . ivy--regex-fuzzy)))
+(setq ivy-extra-directories ())
 
 ;;; Remote
 ;; (setq tramp-verbose 6)
@@ -71,12 +80,10 @@
 (global-set-key (kbd "M-g i") 'lsp-find-implementation)
 (global-set-key (kbd "M-g b") 'dumb-jump-back)
 (global-set-key (kbd "M-g g") 'dumb-jump-go)
-(global-set-key (kbd "M-g w") 'browse-url)
+(global-set-key (kbd "M-g o") 'org-open-at-point)
 ;;  C-h    help-command                      M-h    ns-do-hide-emacs
-
 ;;  C-i    tab                               M-i    tab-to-tab-stop
 ;;  C-j    paredit-newline                   M-j    indent-new-comment-line
-(global-set-key (kbd "C-j") 'dumb-jump-go)
 ;;  C-k    paredit-kill                      M-k    kill-sentence
 ;;  C-l    recenter-top-bottom               M-l    downcase-word
 ;;  C-m    enter                             M-m    back-to-indentation
@@ -100,14 +107,15 @@
 ;;  C-z    sanityinc/maybe-suspend-frame     M-z    zap-to-ch
 
 
-
 ;;  C-TAB  undefined                         M-TAB  is undefined
 (global-set-key (kbd "C-<tab>") 'projectile-switch-to-buffer)
 ;;  C-`    undefined                         M-`    ns-next-frame
 ;;  C--    negative-argument                 M--    negative-argument
+(global-set-key (kbd "C--") 'dash-at-point)
 ;;  C-=    expand-region                     M-=    count-words-region
 ;;  C-[]   esc;abort-recursive-edit          M-[]   undefined
-(global-set-key (kbd "C-]") 'wy-explorer-toggle)
+;;(global-set-key (kbd "C-]") 'wy-explorer-toggle)
+(global-set-key (kbd "C-]") 'treemacs)
 ;;  C-{    paredit-backward-barf-sexp        M-{    backward-paragraph
 ;;  C-}    paredit-forward-barf-sexp         M-}    forward-paragraph
 ;;  C-\    toggle-input-method               M-\    delete-horizontal-space (switch input method)

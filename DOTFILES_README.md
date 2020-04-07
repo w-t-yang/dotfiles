@@ -30,3 +30,4 @@ npm install -g vmd
 #### Miscennanious
 - Map 'Capslock' to 'Control'
 - For terminal.app, go to 'Preference->Profiles->Keyboard', check "Using Option as Meta"
+- Install Dash, then integrate with Alfred and Emacs
