@@ -13,14 +13,13 @@
 
 ;;; Themes
 (require-package 'zenburn-theme)
-(load-theme 'nord t)
+(load-theme 'zenburn t)
 (require-package 'nyan-mode)
 ;;(setq nyan-animate-nyancat t)
 ;;(setq nyan-wavy-trail t)
 ;;(setq nyan-animation-frame-interval 0.1)
 (nyan-mode t)
 
-;;(add-to-list 'default-frame-alist '(font . FONT ))
 (set-face-attribute 'default nil :family "Source Code Pro" :height 160)
 
 (require-package 'treemacs)
@@ -33,11 +32,15 @@
       )
 
 ;;; Search
-;; For fuzzy search, manually enable it everytime
-;; by calling ivy-toggle-fuzzy
+;; For fuzzy search, manually uncomment and reload the file
 ;; (setq ivy-re-builders-alist
 ;;       '((t . ivy--regex-fuzzy)))
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-plus)))
+
+;; After omitting ./ and ../, use 'C-j' when trying to open a directory
 (setq ivy-extra-directories ())
+;; (setq ivy-extra-directories '("../" "./"))
 
 ;;; Remote
 ;; (setq tramp-verbose 6)
