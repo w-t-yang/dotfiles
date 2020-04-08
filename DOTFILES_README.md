@@ -11,9 +11,9 @@ git clone git@github.com:winterock/dotfiles.git ./
 git config --local status.showUntrackedFiles no
 ```
 
-#### Install spacemacs
+#### Install Purcell's emacs config
 ```
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+git clone https://github.com/purcell/emacs.d.git ~/.emacs.d
 ```
 
 #### Using vmd to preview markdown files
