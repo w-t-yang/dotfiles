@@ -12,8 +12,9 @@
 (load-file "~/.wy.emacs.d/wy-org-settings.el")
 
 ;;; Themes
-(require-package 'zenburn-theme)
-(load-theme 'zenburn t)
+;;(require-package 'zenburn-theme)
+;;(require-package 'doom-themes)
+(load-theme 'doom-nord t)
 (require-package 'nyan-mode)
 ;;(setq nyan-animate-nyancat t)
 ;;(setq nyan-wavy-trail t)
@@ -215,7 +216,7 @@
 (setq lsp-inhibit-message t)
 
 ;;; Performance
-(setq desktop-restore-eager 7)
+(setq desktop-restore-eager 1)
 
 (provide 'wy-vanilla)
 
