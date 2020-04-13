@@ -204,8 +204,18 @@
 ;;                                   )))
 
 
-;;(setq js-indent-level 4)
-;;(setq js2-basic-offset 2)
+;; Javascript
+(require-package 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode)) ;; auto-enable for .js/.jsx files
+(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+(defun web-mode-init-hook ()
+  "Hooks for Web mode.  Adjust indent."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  )
+(add-hook 'web-mode-hook  'web-mode-init-hook)
+(setq js-indent-level 2)
+(setq js2-basic-offset 2)
 
 ;; (require-package 'meghanada)
 ;; (add-hook 'java-mode-hook
