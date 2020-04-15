@@ -4,6 +4,8 @@ export PROMPT='[T7@%~]$ '
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #export PATH="/usr/local/opt/emacs-plus/bin/:$PATH"
 
+eval "$(pyenv init -)"
+
 eval `gdircolors ~/.dir_colors`
 alias ls='gls --color=always'
 alias dir='gdir --color=auto'

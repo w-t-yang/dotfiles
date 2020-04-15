@@ -14,7 +14,7 @@
 ;;; Themes
 ;;(require-package 'zenburn-theme)
 ;;(require-package 'doom-themes)
-(load-theme 'doom-nord t)
+(load-theme 'doom-nova t)
 (require-package 'nyan-mode)
 ;;(setq nyan-animate-nyancat t)
 ;;(setq nyan-wavy-trail t)
