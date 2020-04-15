@@ -12,8 +12,9 @@
 (load-file "~/.wy.emacs.d/wy-org-settings.el")
 
 ;;; Themes
-(require-package 'zenburn-theme)
-(load-theme 'zenburn t)
+;;(require-package 'zenburn-theme)
+;;(require-package 'doom-themes)
+(load-theme 'doom-nord t)
 (require-package 'nyan-mode)
 ;;(setq nyan-animate-nyancat t)
 ;;(setq nyan-wavy-trail t)
@@ -41,6 +42,8 @@
 ;; After omitting ./ and ../, use 'C-j' when trying to open a directory
 (setq ivy-extra-directories ())
 ;; (setq ivy-extra-directories '("../" "./"))
+
+(require-package 'osx-dictionary)
 
 ;;; Remote
 ;; (setq tramp-verbose 6)
@@ -98,6 +101,8 @@
 ;;  C-q    quoted-insert                     M-q    paredit-reindent-defun
 ;;  C-r    isearch-backward                  M-r    paredit-raise-sexp
 ;;  C-s    isearch-forward                   M-s    search
+(global-set-key (kbd "M-s d") 'osx-dictionary-search-pointer)
+(global-set-key (kbd "M-s s") 'ispell-word)
 ;;  C-t    transpose-chars                   M-t    transpose-words
 (global-set-key (kbd "M-t") 'cycle-spacing)
 ;;  C-u    universal-argument                M-u    upcase-word
@@ -172,30 +177,29 @@
 (require-package 'dumb-jump)
 
 ;;(setq lsp-keymap-prefix "M-l")
-(require-package 'lsp-mode)
-(require-package 'lsp-ui)
-(setq lsp-ui-doc-enable nil)
-(require-package 'company-lsp)
-;;(require-package 'lsp-treemacs)
-(require-package 'lsp-ivy)
-;;(require-package 'dap-mode)
-(require-package 'yasnippet)
 
-;;(require 'lsp-mode)
+;; (require-package 'lsp-mode)
+;; (require-package 'lsp-ui)
+;; (require-package 'company-lsp)
+;; (require-package 'lsp-treemacs)
+;; (require-package 'lsp-ivy)
+;; (require-package 'dap-mode)
+;; (require-package 'yasnippet)
+;; (setq lsp-ui-doc-enable nil)
+;; (require 'lsp-mode)
 
 ;; Swift
 ;;(require-package 'lsp-sourcekit)
 
 ;; Java
+;; - Install via melpa
+;; (require-package 'lsp-java)
+;; - end of install via melpa
 
-;; Install via melpa
-;;(require-package 'lsp-java)
-;; end of install via melpa
-
-;; Install manually
-;;(load-file "~/.emacs.d/elpa-26.3/lsp-java/lsp-java.el")
-;;(require 'lsp-java)
-;; end of install manually
+;; - Install manually
+;;  (load-file "~/.emacs.d/elpa-26.3/lsp-java/lsp-java.el")
+;;  (require 'lsp-java)
+;; - end of install manually
 
 ;; (add-hook 'java-mode-hook #'lsp)
 ;; (add-hook 'java-mode-hook (lambda ()
@@ -217,26 +221,6 @@
 (setq js-indent-level 2)
 (setq js2-basic-offset 2)
 
-;; (require-package 'meghanada)
-;; (add-hook 'java-mode-hook
-;;           (lambda ()
-;;             ;; meghanada-mode on
-;;             (meghanada-mode t)
-;;             ;; enable telemetry
-;;             (meghanada-telemetry-enable t)
-;;             (flycheck-mode +1)
-;;             (setq c-basic-offset 2)
-;;             ;; use code format
-;;             (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
-;; (cond
-;;  ((eq system-type 'windows-nt)
-;;   (setq meghanada-java-path (expand-file-name "bin/java.exe" (getenv "JAVA_HOME")))
-;;   (setq meghanada-maven-path "mvn.cmd"))
-;;  (t
-;;   (setq meghanada-java-path "java")
-;;   (setq meghanada-maven-path "mvn")))
-
-
 (setq company-minimum-prefix-length 1 company-idle-delay 0.0) ;; default is 0.2
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
@@ -244,7 +228,7 @@
 (setq lsp-inhibit-message t)
 
 ;;; Performance
-(setq desktop-restore-eager 7)
+(setq desktop-restore-eager 1)
 
 (provide 'wy-vanilla)
 
