@@ -93,15 +93,16 @@
 ;;  C-k    paredit-kill                      M-k    kill-sentence
 ;;  C-l    recenter-top-bottom               M-l    downcase-word
 ;;  C-m    enter                             M-m    back-to-indentation
-;;  C-n    next-line                         M-n    comint-next-input
+;;  C-n    next-line                         M-n    comint-next-input/symbol-jump
 ;;  C-o    sanityinc/open-line-with-reindent M-o    facemenu-keymap
 (global-set-key (kbd "M-o") 'switch-window)
 (global-set-key (kbd "M-0") 'delete-window)
-;;  C-p    previous-line                     M-p    comint-previous-input
+;;  C-p    previous-line                     M-p    comint-previous-input/symbol-jump
 ;;  C-q    quoted-insert                     M-q    paredit-reindent-defun
 ;;  C-r    isearch-backward                  M-r    paredit-raise-sexp
 ;;  C-s    isearch-forward                   M-s    search
 (global-set-key (kbd "M-s d") 'osx-dictionary-search-pointer)
+(global-set-key (kbd "M-s g") 'rgrep)
 (global-set-key (kbd "M-s s") 'ispell-word)
 ;;  C-t    transpose-chars                   M-t    transpose-words
 (global-set-key (kbd "M-t") 'cycle-spacing)
