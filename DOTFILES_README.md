@@ -16,6 +16,12 @@ git config --local status.showUntrackedFiles no
 git clone https://github.com/purcell/emacs.d.git ~/.emacs.d
 ```
 
+#### Install emacs
+```
+brew install --cask emacs
+brew reinstall --cask emacs --no-quarantine
+```
+
 #### Using vmd to preview markdown files
 ```
 npm install -g vmd
@@ -27,7 +33,15 @@ npm install -g vmd
 - https://github.com/arcticicestudio/nord-terminal-app.git
 - https://github.com/adobe-fonts/source-code-pro.git
 
+```
+brew install coreutils
+curl -LO https://github.com/adobe-fonts/source-code-pro/archive/release.zip
+unzip release.zip
+cp -a source-code-pro-release/TTF/* ~/Library/Fonts
+```
+
 #### Miscennanious
+- ~/.emacs.d/custom.el
 - Map 'Capslock' to 'Control'
 - For terminal.app, go to 'Preference->Profiles->Keyboard', check "Using Option as Meta"
 - Install Dash, then integrate with Alfred and Emacs

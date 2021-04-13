@@ -23,12 +23,12 @@
 (defun scroll-up-half ()
   "Scroll half up."
   (interactive)
-  (cua-scroll-up (window-half-height)))
+  (scroll-up (window-half-height)))
 
 (defun scroll-down-half ()
   "Scroll half down."
   (interactive)
-  (cua-scroll-down (window-half-height)))
+  (scroll-down (window-half-height)))
 
 (defun wy/toggle-highlighting-word-at-point ()
   "Highlight or unhighlight the word where cursor lies."

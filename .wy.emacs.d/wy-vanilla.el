@@ -14,7 +14,7 @@
 ;;; Themes
 ;;(require-package 'zenburn-theme)
 ;;(require-package 'doom-themes)
-(load-theme 'doom-nova t)
+(load-theme 'doom-nord t)
 (require-package 'nyan-mode)
 ;;(setq nyan-animate-nyancat t)
 ;;(setq nyan-wavy-trail t)
@@ -22,6 +22,9 @@
 (nyan-mode t)
 
 (set-face-attribute 'default nil :family "Source Code Pro" :height 160)
+
+(setq-default fill-column 80)
+(global-display-fill-column-indicator-mode)
 
 (require-package 'treemacs)
 ;;(require-package 'treemacs-icons-dired)
