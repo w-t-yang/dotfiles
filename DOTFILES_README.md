@@ -40,6 +40,13 @@ unzip release.zip
 cp -a source-code-pro-release/TTF/* ~/Library/Fonts
 ```
 
+#### LSP for ruby
+```
+gem install solargraph
+# Then run the server in project
+solargraph server
+```
+
 #### Miscennanious
 - ~/.emacs.d/custom.el
 - Map 'Capslock' to 'Control'

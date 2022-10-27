@@ -13,7 +13,7 @@
 
 ;; Interactive Functions
 (defun wy-explorer-switch-window ()
-  "Switch WYExplorer window"
+  "Switch WYExplorer window."
   (interactive)
   (if (equal wy-explorer-buffer-name (buffer-name (current-buffer)))
       (other-window -1)
@@ -27,7 +27,7 @@
   )
 
 (defun wy-explorer-toggle ()
-  "Toggle WYExplorer"
+  "Toggle WYExplorer."
   (interactive)
 
   (setq window (get-buffer-window wy-explorer-buffer))
