@@ -38,5 +38,11 @@
     (highlight-symbol-at-point))
   )
 
+(defun make-shell (name)
+  "Create a shell buffer named NAME."
+  (interactive "sName: ")
+  (setq name (concat "$" name))
+  (eshell)
+  (rename-buffer name))
 
 ;;; wy-functions.el ends here

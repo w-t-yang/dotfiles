@@ -12,14 +12,16 @@
 (load-file "~/.wy.emacs.d/wy-org-settings.el")
 
 ;;; Themes
-;;(require-package 'zenburn-theme)
+(require-package 'zenburn-theme)
+(load-theme 'zenburn)
 ;;(require-package 'doom-themes)
-(load-theme 'doom-nord t)
+;;(load-theme 'doom-nord t)
 (require-package 'nyan-mode)
 ;;(setq nyan-animate-nyancat t)
 ;;(setq nyan-wavy-trail t)
 ;;(setq nyan-animation-frame-interval 0.1)
 (nyan-mode t)
+(global-display-line-numbers-mode)
 
 (set-face-attribute 'default nil :family "Source Code Pro" :height 160)
 
