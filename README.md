@@ -39,7 +39,7 @@ Nord dircolors
 Nord tmux
 - https://github.com/arcticicestudio/nord-tmux.git
 
-###### DOTFILES
+##### DOTFILES
 
 Clone to home dir
 ```
