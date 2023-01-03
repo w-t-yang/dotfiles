@@ -1,8 +1,5 @@
-;;; wy-functions.el --- helper functions
-;;; wy-vanilla.el --- WY's emacs config
+;;; wy-functions.el --- Helper functions
 ;;; Commentary:
-;;; Helper functions
-
 ;;; Code:
 
 (defun wy/open-remote-root ( server )
@@ -10,13 +7,12 @@
   (interactive "sEnter the server name: ")
   (find-file (format "/ssh:%s:/usr/local/git_tree" server))
   )
+;; (global-set-key (kbd "C-\\") 'wy/open-remote-root)
 
 (defun window-half-height ()
   "Half height of 'selected-window'."
   (max 1
-       (/
-        (window-height (selected-window))
-        2)
+       (/ (window-height (selected-window)) 2)
        )
   )
 
@@ -30,13 +26,16 @@
   (interactive)
   (scroll-down (window-half-height)))
 
-(defun wy/toggle-highlighting-word-at-point ()
-  "Highlight or unhighlight the word where cursor lies."
-  (interactive)
-  (if hi-lock-interactive-patterns
-      (unhighlight-regexp (car (car hi-lock-interactive-patterns)))
-    (highlight-symbol-at-point))
-  )
+(global-set-key (kbd "C-v") 'scroll-up-half)
+(global-set-key (kbd "M-v") 'scroll-down-half)
+
+;; (defun wy/toggle-highlighting-word-at-point ()
+;;   "Highlight or unhighlight the word where cursor lies."
+;;   (interactive)
+;;   (if hi-lock-interactive-patterns
+;;       (unhighlight-regexp (car (car hi-lock-interactive-patterns)))
+;;     (highlight-symbol-at-point))
+;;   )
 
 (defun make-shell (name)
   "Create a shell buffer named NAME."

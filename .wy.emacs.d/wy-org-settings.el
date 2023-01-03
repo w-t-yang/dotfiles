@@ -1,10 +1,11 @@
-;;; wy-org-settings.el --- WY's org-mode settings
+;;; wy-org-settings.el --- WY's org-mode
 ;;; Commentary:
-;;; configuration based on Purcell's work
+;;; Configs for org-mode
 
 ;;; Code:
 
-(require 'init-elpa)
+(require 'init-elpa "~/.emacs.d/lisp/init-elpa.el")
+
 (require-package 'org-bullets)
 
 (add-hook 'org-mode-hook 'org-bullets-mode)

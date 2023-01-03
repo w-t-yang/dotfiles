@@ -1,4 +1,8 @@
-;; Constants and Variables
+;;; wy-explorer.el --- Explorer
+;;; Commentary:
+;;; A simple implementation of sidebar explorer
+
+;;; Code:
 (defconst wy-explorer-buffer-name " *WYExplorer*"
   "Name of wy-explorer buffer")
 (defvar wy-explorer-buffer nil)
@@ -211,6 +215,7 @@
 ;;   (setq projectile-ignored-project-function #'wy-explorer-ignore-project)
 ;;   )
 
-;;(provide 'wy-explorer-mode)
+;;(global-set-key (kbd "C-]") 'wy-explorer-toggle)
 
-
+(provide 'wy-explorer)
+;;; wy-explorer.el ends here
