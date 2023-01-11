@@ -13,10 +13,15 @@
 ;;(load-file "~/.wy.emacs.d/wy-org-settings.el")
 
 ;;; Themes
-;;(require-package 'zenburn-theme)
-;;(load-theme 'zenburn)
 (load-theme 'sanityinc-tomorrow-day)
 ;;(load-theme 'sanityinc-tomorrow-night)
+
+;;(require-package 'zenburn-theme)
+;;(load-theme 'zenburn)
+
+;;(require-package 'material-theme)
+;;(load-theme 'material)
+;;(load-theme 'material-light)
 
 ;; doom-themes are not compatible with line number coloum background
 ;;(require-package 'doom-themes)
