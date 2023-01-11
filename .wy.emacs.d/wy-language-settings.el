@@ -20,10 +20,10 @@
 
 (require 'typescript-mode)
 (add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
-(defvar typescript-indent-level 2)
+(setq typescript-indent-level 2)
 
 (require-package 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.tsx?$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx$" . web-mode))
 (defun web-mode-init-hook ()
   "Hooks for Web mode.  Adjust indent."
   (setq web-mode-markup-indent-offset 2)
