@@ -13,19 +13,20 @@
 ;;(load-file "~/.wy.emacs.d/wy-org-settings.el")
 
 ;;; Themes
-(require-package 'zenburn-theme)
-(require-package 'doom-themes)
-(load-theme 'zenburn)
+;;(require-package 'zenburn-theme)
+;;(load-theme 'zenburn)
+(load-theme 'sanityinc-tomorrow-day)
+;;(load-theme 'sanityinc-tomorrow-night)
+
+;; doom-themes are not compatible with line number coloum background
+;;(require-package 'doom-themes)
 
 (set-face-attribute 'default nil :family "Source Code Pro" :height 160)
 (setq fill-column 80)
 (global-display-fill-column-indicator-mode)
-;;(global-display-line-numbers-mode)
 
 (require-package 'nyan-mode)
 (nyan-mode t)
-
-
 
 ;;; Search
 ;; For fuzzy search, manually uncomment and reload the file
@@ -56,7 +57,7 @@
 (require-package 'treemacs)
 (require-package 'treemacs-persp)
 (require-package 'treemacs-projectile)
-(defvar treemacs-width 36)
+(defvar treemacs-width 48)
 (defvar treemacs-indentation 1)
 (defvar treemacs-no-png-images t)
 (global-set-key (kbd "C-]") 'treemacs)

@@ -17,6 +17,8 @@
 ;;   npm install -g typescript-language-server typescript
 ;; Run
 ;;   typescript-language-server --stdio
+(add-to-list 'auto-mode-alist '("\\.ts?$" . typescript-mode))
+(defvar typescript-indent-level 2)
 
 ;;; Swift
 (require-package 'swift-mode)
@@ -68,6 +70,17 @@
                '(swift-mode . ("xcrun" "sourcekit-lsp"))))
 
 ;;(add-hook 'swift-mode-hook 'eglot-ensure)
+
+;;; tsx
+(require-package 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx?$" . web-mode))
+(setq web-mode-content-types-alist '(("tsx" . "\\.ts[x]?\\'")))
+(defun web-mode-init-hook ()
+  "Hooks for Web mode.  Adjust indent."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  )
+(add-hook 'web-mode-hook  'web-mode-init-hook)
 
 
 ;;; wy-language-settings.el ends here
