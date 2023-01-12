@@ -9,7 +9,7 @@
 (require 'init-elpa "~/.emacs.d/lisp/init-elpa.el")
 
 ;;(load-file "~/.wy.emacs.d/wy-explorer.el")
-;;(load-file "~/.wy.emacs.d/wy-functions.el")
+(load-file "~/.wy.emacs.d/wy-functions.el")
 ;;(load-file "~/.wy.emacs.d/wy-org-settings.el")
 
 ;;; Themes
