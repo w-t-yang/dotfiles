@@ -33,6 +33,14 @@
 (require-package 'nyan-mode)
 (nyan-mode t)
 
+(require-package 'mini-frame)
+(custom-set-variables
+ '(mini-frame-show-parameters
+   '((top . 360)
+     (width . 0.7)
+     (left . 0.5))))
+(mini-frame-mode t)
+
 ;;; Search
 ;; For fuzzy search, manually uncomment and reload the file
 ;; (setq ivy-re-builders-alist
@@ -62,7 +70,7 @@
 (require-package 'treemacs)
 (require-package 'treemacs-persp)
 (require-package 'treemacs-projectile)
-(defvar treemacs-width 48)
+(defvar treemacs-width 36)
 (defvar treemacs-indentation 1)
 (defvar treemacs-no-png-images t)
 (global-set-key (kbd "C-]") 'treemacs)
