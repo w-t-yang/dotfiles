@@ -27,7 +27,7 @@
 ;;(require-package 'doom-themes)
 
 (set-face-attribute 'default nil :family "Source Code Pro" :height 160)
-(setq fill-column 80)
+(setq-default fill-column 80)
 (global-display-fill-column-indicator-mode)
 
 (require-package 'nyan-mode)
@@ -35,10 +35,19 @@
 
 (require-package 'mini-frame)
 (custom-set-variables
+ '(mini-frame-advice-functions
+   `(read-from-minibuffer
+     read-char-from-minibuffer
+     read-string
+     yes-or-no-p )))
+(custom-set-variables
  '(mini-frame-show-parameters
    '((top . 360)
      (width . 0.7)
+     (height . 0.2)
      (left . 0.5))))
+(custom-set-variables
+ '(mini-frame-resize 'grow-only))
 (mini-frame-mode t)
 
 ;;; Search
@@ -81,6 +90,12 @@
 
 ;;; ESS
 (require-package 'ess)
+
+;;; Kubernetes
+(require-package 'kubernetes)
+
+;;; Docker
+(require-package 'docker)
 
 ;;; Performance
 (setq desktop-restore-eager 1)

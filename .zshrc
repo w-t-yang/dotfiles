@@ -1,8 +1,20 @@
 setopt PROMPT_SUBST
-export PROMPT='[T7@%~]$ '
+
+# GIT FUNCTIONS
+git_branch() {
+    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+export PROMPT='%~@$(git_branch) > '
+
+# export CLICOLOR=1
+# export LSCOLORS=ExFxBxDxCxegedabagacad
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #export PATH="/usr/local/opt/emacs-plus/bin/:$PATH"
+
+#After install coreutils
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 eval "$(pyenv init -)"
 
