@@ -42,7 +42,7 @@
      yes-or-no-p )))
 (custom-set-variables
  '(mini-frame-show-parameters
-   '((top . 360)
+   '((top . 0.4)
      (width . 0.7)
      (height . 0.2)
      (left . 0.5))))
