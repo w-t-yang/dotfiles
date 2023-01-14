@@ -39,6 +39,7 @@ Nord dircolors
 Nord tmux
 - https://github.com/arcticicestudio/nord-tmux.git
 
+
 ##### DOTFILES
 
 Clone to home dir
@@ -55,15 +56,13 @@ git config --local status.showUntrackedFiles no
 
 ### Emacs
 
-##### Installation
-
-Install with brew
+##### Install with brew
 ```
 brew install --cask emacs
 brew reinstall --cask emacs --no-quarantine
 ```
 
-Install with binary
+##### Install with binary
 https://emacsformacosx.com/
 
 
@@ -72,18 +71,15 @@ https://emacsformacosx.com/
 git clone https://github.com/purcell/emacs.d.git ~/.emacs.d
 ```
 
+##### Trouble shooting
+When init emacs for the first time, it may take a long time
+to install all the packages. And some may timeout or run into other issues.
+
+Restart emacs multiple times to make sure everything is properly installed.
 
 ##### [Optional]Using vmd to preview markdown files
 ```
 npm install -g vmd
-```
-
-
-##### [Optional]LSP for ruby
-```
-gem install solargraph
-# Then run the server in project
-solargraph server
 ```
 
 ##### Miscennanious
