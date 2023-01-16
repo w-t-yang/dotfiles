@@ -35,6 +35,7 @@
 ;;  C-k    paredit-kill                      M-k    kill-sentence
 ;;  C-l    recenter-top-bottom               M-l    downcase-word
 ;;  C-m    enter                             M-m    back-to-indentation
+(global-set-key (kbd "C-\\") 'session-jump-to-last-change)
 ;;  C-n    next-line                         M-n    comint-next-input/symbol-jump
 ;;  C-o    sanityinc/open-line-with-reindent M-o    facemenu-keymap
 (global-set-key (kbd "C-o") 'sanityinc/toggle-delete-other-windows)

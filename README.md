@@ -39,14 +39,15 @@ Nord dircolors
 Nord tmux
 - https://github.com/arcticicestudio/nord-tmux.git
 
+Tomorrow Theme
+- https://github.com/chriskempson/tomorrow-theme
 
 ##### DOTFILES
 
 Clone to home dir
 ```
 git clone git@github.com:winterock/dotfiles.git
-mv dotfiles/* ./
-mv dotfiles/.* ./
+mv dotfiles/.* ~/
 ```
 
 Ignore untracked files
@@ -59,6 +60,8 @@ git config --local status.showUntrackedFiles no
 ##### Install with brew
 ```
 brew install --cask emacs
+
+# When having troubles and need to reinstall, try
 brew reinstall --cask emacs --no-quarantine
 ```
 

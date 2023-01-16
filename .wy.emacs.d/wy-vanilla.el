@@ -44,10 +44,13 @@
  '(mini-frame-show-parameters
    '((top . 0.4)
      (width . 0.7)
-     (height . 0.2)
-     (left . 0.5))))
+     ;; (height . 0.2)
+     (left . 0.5)
+     (alpha . 0.9)
+     ;; https://github.com/minad/vertico/issues/115
+     (no-accept-focus . t))))
 (custom-set-variables
- '(mini-frame-resize 'grow-only))
+ '(mini-frame-resize 'resize)) ;; resize or grow-only
 (mini-frame-mode t)
 
 ;;; Search
@@ -96,6 +99,9 @@
 
 ;;; Docker
 (require-package 'docker)
+
+;;; Other packages
+;;(require-package 'origami) ;; Code block folding, already in PurcellEmacs
 
 ;;; Performance
 (setq desktop-restore-eager 1)
