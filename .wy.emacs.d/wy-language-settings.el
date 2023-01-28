@@ -5,10 +5,15 @@
 (require 'init-elpa "~/.emacs.d/lisp/init-elpa.el")
 
 ;;; Ruby
-;; Solargraph [https://github.com/castwide/solargraph]
-;; Add server to Gemfile
+;; Solargraph [https://github.com/castwide/solargraph] Add server to Gemfile gem
 ;;   gem 'solargraph', group: :development
-;; Start the language server with local dev server
+;; Or install it with
+;;   gem install 'solargraph'
+;; [Optional] Other configurations
+;;   solargraph download-core
+;;   solargraph bundle
+;;   solargraph config
+;;   solargraph scan -v
 
 ;;; Javascript & Typescript & tsx
 ;; Typescript language server
