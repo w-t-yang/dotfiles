@@ -38,9 +38,11 @@
 (global-set-key (kbd "C-\\") 'session-jump-to-last-change)
 ;;  C-n    next-line                         M-n    comint-next-input/symbol-jump
 ;;  C-o    sanityinc/open-line-with-reindent M-o    facemenu-keymap
-(global-set-key (kbd "C-o") 'sanityinc/toggle-delete-other-windows)
+(define-prefix-command 'window-operations)
+(global-set-key (kbd "C-o") 'window-operations)
+(global-set-key (kbd "C-o o") 'sanityinc/toggle-delete-other-windows)
+(global-set-key (kbd "C-o i") 'delete-window)
 (global-set-key (kbd "M-o") 'next-window-any-frame)
-(global-set-key (kbd "M-0") 'delete-window)
 ;;  C-p    previous-line                     M-p    comint-previous-input/symbol-jump
 ;;  C-q    quoted-insert                     M-q    paredit-reindent-defun
 (global-set-key (kbd "M-q") 'kill-current-buffer)
