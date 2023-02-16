@@ -9,8 +9,6 @@
 (require 'init-elpa "~/.emacs.d/lisp/init-elpa.el")
 
 ;;(load-file "~/.wy.emacs.d/wy-explorer.el")
-(load-file "~/.wy.emacs.d/wy-functions.el")
-;;(load-file "~/.wy.emacs.d/wy-org-settings.el")
 
 ;;; Themes
 (load-theme 'sanityinc-tomorrow-day)
@@ -53,6 +51,9 @@
  '(mini-frame-resize 'resize)) ;; resize or grow-only
 (mini-frame-mode t)
 
+;; (setq-default left-margin-width 0 right-margin-width 0)
+;; (set-window-buffer nil (current-buffer))
+
 ;;; Search
 ;; For fuzzy search, manually uncomment and reload the file
 ;; (setq ivy-re-builders-alist
@@ -85,11 +86,14 @@
 (defvar treemacs-width 36)
 (defvar treemacs-indentation 1)
 (defvar treemacs-no-png-images t)
+(defvar treemacs-user-mode-line-format
+  '(:eval (format " Workspace: %s"
+                  (treemacs-workspace->name (treemacs-current-workspace)))))
 (global-set-key (kbd "C-]") 'treemacs)
 
 ;;; Dictionary
 (require-package 'osx-dictionary)
-(global-set-key (kbd "M-s d") 'osx-dictionary-search-pointer)
+(global-set-key (kbd "M-s d") 'osx-dictionary-search-word-at-point)
 
 ;;; ESS
 (require-package 'ess)
@@ -99,6 +103,9 @@
 
 ;;; Docker
 (require-package 'docker)
+
+;;; Httpd
+(require-package 'simple-httpd)
 
 ;;; Other packages
 ;;(require-package 'origami) ;; Code block folding, already in PurcellEmacs
@@ -111,6 +118,12 @@
 
 ;;; Key Bindings
 (load-file "~/.wy.emacs.d/wy-key-bindings.el")
+
+;;; Org-mode settings
+(load-file "~/.wy.emacs.d/wy-org-settings.el")
+
+;;; Custom functions
+(load-file "~/.wy.emacs.d/wy-functions.el")
 
 (provide 'wy-vanilla)
 ;;; wy-vanilla.el ends here
