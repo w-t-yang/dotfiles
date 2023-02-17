@@ -37,11 +37,33 @@
 ;;     (highlight-symbol-at-point))
 ;;   )
 
-(defun make-shell (name)
+(defun wy-make-shell (name)
   "Create a shell buffer named NAME."
   (interactive "sName: ")
   (setq name (concat "$" name))
   (eshell)
   (rename-buffer name))
+
+(defun wy-split-4-windows ()
+  "Split frame into 4 windows."
+  (interactive)
+  (dired "~/Projects")
+  (sanityinc/toggle-delete-other-windows)
+  (split-window-below)
+  (split-window-right)
+  (next-window-any-frame)
+  (next-window-any-frame)
+  (split-window-right)
+  (next-window-any-frame)
+  (next-window-any-frame))
+
+(defun wy-split-3-windows ()
+  "Split frame into 4 windows."
+  (interactive)
+  (dired "~/Projects")
+  (sanityinc/toggle-delete-other-windows)
+  (split-window-right)
+  (split-window-below)
+  (shrink-window-horizontally 20))
 
 ;;; wy-functions.el ends here

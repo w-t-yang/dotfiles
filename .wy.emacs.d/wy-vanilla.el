@@ -28,8 +28,13 @@
 (setq-default fill-column 80)
 (global-display-fill-column-indicator-mode)
 
-(require-package 'nyan-mode)
-(nyan-mode t)
+;; (require-package 'vscode-dark-plus-theme)
+;; (load-theme 'vscode-dark-plus)
+;; (require-package 'solaire-mode)
+;; (solaire-mode +1)
+
+;; (require-package 'nyan-mode)
+;; (nyan-mode t)
 
 (require-package 'mini-frame)
 (custom-set-variables
@@ -40,7 +45,7 @@
      yes-or-no-p )))
 (custom-set-variables
  '(mini-frame-show-parameters
-   '((top . 0.4)
+   '((top . 0.05)
      (width . 0.7)
      ;; (height . 0.2)
      (left . 0.5)
@@ -50,6 +55,8 @@
 (custom-set-variables
  '(mini-frame-resize 'resize)) ;; resize or grow-only
 (mini-frame-mode t)
+
+(winner-mode t)
 
 ;; (setq-default left-margin-width 0 right-margin-width 0)
 ;; (set-window-buffer nil (current-buffer))

@@ -33,6 +33,8 @@
 (global-set-key (kbd "M-+") 'enlarge-window)
 (global-set-key (kbd "C-,") 'xref-find-definitions)
 (global-set-key (kbd "C-.") 'xref-find-references)
+(global-set-key (kbd "C-M-v") 'scroll-other-window)
+(global-set-key (kbd "M-V") 'scroll-other-window-down)
 
 (defun wy-get-key-binding-func (key)
   "Get binding function for given KEY."
