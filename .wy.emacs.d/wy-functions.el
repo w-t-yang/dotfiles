@@ -66,4 +66,16 @@
   (split-window-below)
   (shrink-window-horizontally 20))
 
+(defvar wy-other-window-background (face-attribute 'fringe :background))
+
+(defun wy-highlight-selected-window ()
+  "Highlight selected window."
+  (walk-windows (lambda (w)
+                  (unless (eq w (selected-window))
+                    (with-current-buffer (window-buffer w)
+                      (buffer-face-set `(:background ,wy-other-window-background))))))
+  (buffer-face-set 'default))
+
+(add-hook 'buffer-list-update-hook 'wy-highlight-selected-window)
+
 ;;; wy-functions.el ends here
