@@ -50,7 +50,7 @@
     )
   )
 
-(setq-local wy-project-root "~/")
+(defvar wy-project-root "~/")
 
 (defun wy-split-2-windows ()
   "Split frame into 2 windows."
