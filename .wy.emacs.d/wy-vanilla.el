@@ -11,8 +11,9 @@
 ;;(load-file "~/.wy.emacs.d/wy-explorer.el")
 
 ;;; Themes
-(load-theme 'sanityinc-tomorrow-day)
+;;(load-theme 'sanityinc-tomorrow-day)
 ;;(load-theme 'sanityinc-tomorrow-night)
+(load-theme 'sanityinc-solarized-light)
 
 ;;(require-package 'zenburn-theme)
 ;;(load-theme 'zenburn)
@@ -24,7 +25,7 @@
 ;; doom-themes are not compatible with line number coloum background
 ;;(require-package 'doom-themes)
 
-(set-face-attribute 'default nil :family "Source Code Pro" :height 160)
+(set-face-attribute 'default nil :family "Source Code Pro" :height 140)
 (setq-default fill-column 80)
 (global-display-fill-column-indicator-mode)
 
