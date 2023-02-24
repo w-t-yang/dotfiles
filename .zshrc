@@ -17,6 +17,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 eval "$(pyenv init -)"
+eval "$(rbenv init - zsh)"
 
 eval `gdircolors ~/.dir_colors`
 alias ls='gls --color=always'
