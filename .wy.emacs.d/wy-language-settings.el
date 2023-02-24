@@ -22,6 +22,13 @@
 ;;   npm install -g typescript-language-server typescript
 ;; Run
 ;;   typescript-language-server --stdio
+(defun wy-run-rubocop ()
+  "Run rubocop autofix in current project."
+  (interactive)
+  (message "Running Rubocup autofix...")
+  (projectile-run-shell-command-in-root "rubocop -A")
+  )
+(global-set-key (kbd "C-c r r") 'wy-run-rubocop)
 
 (require 'typescript-mode)
 (add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
@@ -85,6 +92,14 @@
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
                '(swift-mode . ("xcrun" "sourcekit-lsp"))))
+
+(defun wy-run-swiftlint ()
+  "Run swiftlint autofix in current project."
+  (interactive)
+  (message "Running SwiftLint autofix...")
+  (projectile-run-shell-command-in-root "swiftlint --fix")
+  )
+(global-set-key (kbd "C-c r s") 'wy-run-swiftlint)
 
 ;;(add-hook 'swift-mode-hook 'eglot-ensure)
 

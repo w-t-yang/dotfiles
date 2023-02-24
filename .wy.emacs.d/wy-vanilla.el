@@ -115,6 +115,9 @@
 ;;; Httpd
 (require-package 'simple-httpd)
 
+;;; Restclient
+(require-package 'restclient)
+
 ;;; Other packages
 ;;(require-package 'origami) ;; Code block folding, already in PurcellEmacs
 
