@@ -50,7 +50,7 @@
     )
   )
 
-(defvar wy-project-root "~/")
+(defvar wy-project-root "~/Projects")
 
 (defun wy-split-2-windows ()
   "Split frame into 2 windows."
