@@ -40,7 +40,7 @@
 (defun wy-make-shell (name)
   "Create a shell buffer named NAME."
   (interactive "sName: ")
-  (setq name (concat "$" name))
+  (setq name (format "[%s]$%s" (projectile-project-name) name))
   (if (get-buffer name)
       (switch-to-buffer name)
     (progn
@@ -50,15 +50,15 @@
     )
   )
 
-(defvar wy-project-root "~/Projects")
+(defvar wy-shrink-window-steps 32)
 
 (defun wy-split-2-windows ()
   "Split frame into 2 windows."
   (interactive)
   (delete-other-windows)
   (split-window-right)
-  (shrink-window-horizontally 20)
-  (dired wy-project-root)
+  (shrink-window-horizontally wy-shrink-window-steps)
+  (dired (projectile-project-root))
   (next-window-any-frame)
   )
 
@@ -67,10 +67,11 @@
   (interactive)
   (delete-other-windows)
   (split-window-right)
-  (shrink-window-horizontally 20)
-  (dired wy-project-root)
+  (shrink-window-horizontally wy-shrink-window-steps)
+  (dired (projectile-project-root))
   (split-window-below)
   (next-window-any-frame)
+  (wy-make-shell "cmd")
   (next-window-any-frame)
   )
 
@@ -78,7 +79,7 @@
   "Split frame into 4 windows."
   (interactive)
   (delete-other-windows)
-  (dired wy-project-root)
+  (dired (projectile-project-root))
   (split-window-below)
   (split-window-right)
   (wy-make-shell "1")

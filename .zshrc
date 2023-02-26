@@ -5,7 +5,7 @@ git_branch() {
     git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-export PROMPT='%~@$(git_branch) > '
+export PROMPT='%~@$(git_branch) $ '
 
 # export CLICOLOR=1
 # export LSCOLORS=ExFxBxDxCxegedabagacad

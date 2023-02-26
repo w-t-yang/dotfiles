@@ -8,6 +8,7 @@
 (global-set-key (kbd "M-g b") 'dumb-jump-back)
 (global-set-key (kbd "M-g g") 'dumb-jump-go)
 (global-set-key (kbd "M-g o") 'org-open-at-point)
+(global-set-key (kbd "C-i") 'consult-imenu)
 
 (define-prefix-command 'window-operations)
 (global-set-key (kbd "C-o") 'window-operations)
