@@ -92,7 +92,6 @@
   (wy-make-shell "4")
   (next-window-any-frame))
 
-(global-set-key (kbd "M-1") 'sanityinc/toggle-delete-other-windows)
 (global-set-key (kbd "M-2") 'wy-split-2-windows)
 (global-set-key (kbd "M-3") 'wy-split-3-windows)
 (global-set-key (kbd "M-4") 'wy-split-4-windows)

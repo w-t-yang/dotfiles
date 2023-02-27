@@ -2,18 +2,23 @@
 ;;; Commentary:
 ;;; Code:
 
+(global-set-key (kbd "RET") 'newline)
+
 (global-set-key (kbd "M-a") 'backward-paragraph)
 (global-set-key (kbd "M-e") 'forward-paragraph)
-(global-set-key (kbd "M-g l") 'goto-line)
 (global-set-key (kbd "M-g b") 'dumb-jump-back)
+(global-set-key (kbd "M-g e") 'embark-act)
 (global-set-key (kbd "M-g g") 'dumb-jump-go)
+(global-set-key (kbd "M-g i") 'consult-imenu)
+(global-set-key (kbd "M-g l") 'goto-line)
 (global-set-key (kbd "M-g o") 'org-open-at-point)
-(global-set-key (kbd "C-i") 'consult-imenu)
 
 (define-prefix-command 'window-operations)
 (global-set-key (kbd "C-o") 'window-operations)
 (global-set-key (kbd "C-o o") 'sanityinc/toggle-delete-other-windows)
+(global-set-key (kbd "M-1") 'sanityinc/toggle-delete-other-windows)
 (global-set-key (kbd "C-o i") 'delete-window)
+(global-set-key (kbd "M-0") 'delete-window)
 (global-set-key (kbd "C-o r") 'split-window-right)
 (global-set-key (kbd "C-o b") 'split-window-below)
 
@@ -21,7 +26,7 @@
 (global-set-key (kbd "M-q") 'kill-current-buffer)
 (global-set-key (kbd "M-s g") 'rgrep)
 (global-set-key (kbd "M-s s") 'ispell-word)
-(global-set-key (kbd "C-t") 'move-to-window-line-top-bottom)
+;;(global-set-key (kbd "C-t") 'embark-act)
 (global-set-key (kbd "M-t") 'cycle-spacing)
 
 (global-set-key (kbd "C-<tab>") 'consult-buffer)
@@ -36,6 +41,16 @@
 (global-set-key (kbd "C-.") 'xref-find-references)
 (global-set-key (kbd "C-M-v") 'scroll-other-window)
 (global-set-key (kbd "M-V") 'scroll-other-window-down)
+
+(add-hook 'magit-mode-hook
+          (lambda ()
+            (local-unset-key (kbd "C-<tab>"))
+            (local-unset-key (kbd "M-0"))
+            (local-unset-key (kbd "M-1"))
+            (local-unset-key (kbd "M-2"))
+            (local-unset-key (kbd "M-3"))
+            (local-unset-key (kbd "M-4"))
+            ))
 
 (defun wy-get-key-binding-func (key)
   "Get binding function for given KEY."
