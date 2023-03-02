@@ -37,6 +37,26 @@
 ;;     (highlight-symbol-at-point))
 ;;   )
 
+(defun wy-resize-content-margin (margin)
+  "Resize MARGIN of the content in current window."
+  (interactive "nMargin:")
+  (set-window-margins nil margin margin)
+  )
+
+(defvar wy-toggled-focus-on-content nil)
+(defun wy-toggle-focus-on-content ()
+  "Resize margin of current window, remove fringes and line-mode."
+  (interactive)
+  (if (eq wy-toggled-focus-on-content nil)
+      (progn (fringe-mode 0)
+             (set-window-margins (selected-window) 72 72)
+             (setq wy-toggled-focus-on-content t))
+    (progn (fringe-mode nil)
+           (set-window-margins (selected-window) 0 0)
+           (setq wy-toggled-focus-on-content nil))
+    )
+  )
+
 (defun wy-make-shell (name)
   "Create a shell buffer named NAME."
   (interactive "sName: ")

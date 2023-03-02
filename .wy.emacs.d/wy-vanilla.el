@@ -59,22 +59,6 @@
 
 (winner-mode t)
 
-;; (setq-default left-margin-width 0 right-margin-width 0)
-;; (set-window-buffer nil (current-buffer))
-
-;;; Search
-;; For fuzzy search, manually uncomment and reload the file
-;; (setq ivy-re-builders-alist
-;;       '((t . ivy--regex-fuzzy)))
-;; (setq ivy-re-builders-alist
-;;       '((t . ivy--regex-plus)))
-
-;; After omitting ./ and ../, use 'C-j' when trying to open a directory
-;; (setq ivy-extra-directories ())
-;; (setq ivy-extra-directories '("../" "./"))
-
-
-
 ;;; Remote
 ;; (setq tramp-verbose 6)
 ;; (defvar ivy-rich-parse-remote-buffer nil)

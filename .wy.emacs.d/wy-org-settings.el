@@ -86,5 +86,8 @@
 ;; (global-set-key (kbd "M-c") 'org-capture)
 (global-set-key (kbd "C-*") 'make-capture-frame)
 
+;; org-reveal for presentation in Emacs
+(require-package 'ox-reveal)
+
 (provide 'wy-org-settings)
 ;;; wy-org-settings.el ends here

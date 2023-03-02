@@ -21,6 +21,8 @@
 (global-set-key (kbd "M-0") 'delete-window)
 (global-set-key (kbd "C-o r") 'split-window-right)
 (global-set-key (kbd "C-o b") 'split-window-below)
+(global-set-key (kbd "C-o f") 'wy-toggle-focus-on-content)
+(global-set-key (kbd "C-o l") 'display-line-numbers-mode)
 
 (global-set-key (kbd "M-o") 'next-window-any-frame)
 (global-set-key (kbd "M-q") 'kill-current-buffer)
