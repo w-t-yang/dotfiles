@@ -37,23 +37,36 @@
 ;;     (highlight-symbol-at-point))
 ;;   )
 
-(defun wy-resize-content-margin (margin)
-  "Resize MARGIN of the content in current window."
-  (interactive "nMargin:")
-  (set-window-margins nil margin margin)
+(defvar wy-content-margin 0)
+(defun wy-set-content-margin (margin)
+  "Set MARGIN of content."
+  (interactive "nMargin: ")
+  (setq wy-content-margin margin)
   )
 
-(defvar wy-toggled-focus-on-content nil)
-(defun wy-toggle-focus-on-content ()
-  "Resize margin of current window, remove fringes and line-mode."
+(defvar wy-content-margin-toggled nil)
+(defun wy-toggle-content-margin ()
+  "Apply MARGIN to current window."
   (interactive)
-  (if (eq wy-toggled-focus-on-content nil)
-      (progn (fringe-mode 0)
-             (set-window-margins (selected-window) 72 72)
-             (setq wy-toggled-focus-on-content t))
-    (progn (fringe-mode nil)
-           (set-window-margins (selected-window) 0 0)
-           (setq wy-toggled-focus-on-content nil))
+  (if (eq wy-content-margin-toggled nil)
+      (progn
+        (fringe-mode 0) ;; No fringes
+        ;; Set default content margin if it's 0
+        (if (eq wy-content-margin 0)
+            (setq wy-content-margin 64)
+          )
+        (set-window-margins nil wy-content-margin wy-content-margin)
+        (setq left-margin-width wy-content-margin)
+        (setq right-margin-width wy-content-margin)
+        (setq-local wy-content-margin-toggled t)
+        )
+    (progn
+      (fringe-mode nil) ;; Default fringes
+      (set-window-margins nil 0 0)
+      (setq left-margin-width 0)
+      (setq right-margin-width 0)
+      (setq-local wy-content-margin-toggled nil)
+      )
     )
   )
 
