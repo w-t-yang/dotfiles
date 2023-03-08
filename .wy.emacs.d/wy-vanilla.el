@@ -11,9 +11,18 @@
 ;;(load-file "~/.wy.emacs.d/wy-explorer.el")
 
 ;;; Themes
+(require 'init-themes "~/.emacs.d/lisp/init-themes.el")
 ;;(load-theme 'sanityinc-tomorrow-day)
 ;;(load-theme 'sanityinc-tomorrow-night)
-(load-theme 'sanityinc-solarized-light)
+;;(load-theme 'sanityinc-tomorrow-bright)
+;;(load-theme 'sanityinc-tomorrow-eighties)
+;;(load-theme 'sanityinc-solarized-light)
+
+;; Instead of calling 'load-theme', it's better to set custom-enabled-themes
+;; and use 'reapply-themes' from 'init-themes' to forcibly load themes
+;; This help to keep a clean list of enabled themes
+(setq custom-enabled-themes '(sanityinc-solarized-light))
+(reapply-themes)
 
 ;;(require-package 'zenburn-theme)
 ;;(load-theme 'zenburn)
@@ -25,7 +34,7 @@
 ;; doom-themes are not compatible with line number coloum background
 ;;(require-package 'doom-themes)
 
-(set-face-attribute 'default nil :family "Source Code Pro" :height 140)
+(set-face-attribute 'default nil :family "Source Code Pro" :height 160)
 (setq-default fill-column 80)
 (global-display-fill-column-indicator-mode)
 
@@ -101,6 +110,7 @@
 
 ;;; Restclient
 (require-package 'restclient)
+(add-to-list 'auto-mode-alist '("\\.http$" . restclient-mode))
 
 ;;; Other packages
 ;;(require-package 'origami) ;; Code block folding, already in PurcellEmacs

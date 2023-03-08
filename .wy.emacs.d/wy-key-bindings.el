@@ -22,7 +22,7 @@
 (global-set-key (kbd "C-o r") 'split-window-right)
 (global-set-key (kbd "C-o b") 'split-window-below)
 (global-set-key (kbd "C-o m s") 'wy-set-content-margin)
-(global-set-key (kbd "C-o m t") 'wy-toggle-content-margin)
+(global-set-key (kbd "C-o m m") 'wy-toggle-content-margin)
 
 (global-set-key (kbd "M-o") 'next-window-any-frame)
 (global-set-key (kbd "M-q") 'kill-current-buffer)

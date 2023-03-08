@@ -92,6 +92,7 @@
   (split-window-right)
   (shrink-window-horizontally wy-shrink-window-steps)
   (dired (projectile-project-root))
+  (wy-make-shell "cmd")
   (next-window-any-frame)
   )
 
