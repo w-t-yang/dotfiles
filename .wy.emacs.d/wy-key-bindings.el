@@ -26,6 +26,7 @@
 
 (global-set-key (kbd "M-o") 'next-window-any-frame)
 (global-set-key (kbd "M-q") 'kill-current-buffer)
+(require-package 'rg)
 (global-set-key (kbd "M-s g") 'rg)
 (global-set-key (kbd "M-s s") 'ispell-word)
 ;;(global-set-key (kbd "C-t") 'embark-act)
