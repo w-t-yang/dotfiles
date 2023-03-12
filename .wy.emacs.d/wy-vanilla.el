@@ -21,7 +21,7 @@
 ;; Instead of calling 'load-theme', it's better to set custom-enabled-themes
 ;; and use 'reapply-themes' from 'init-themes' to forcibly load themes
 ;; This help to keep a clean list of enabled themes
-(setq custom-enabled-themes '(sanityinc-solarized-light))
+(setq custom-enabled-themes '(sanityinc-tomorrow-eighties))
 (reapply-themes)
 
 ;;(require-package 'zenburn-theme)
@@ -112,11 +112,16 @@
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.http$" . restclient-mode))
 
+;;; Undo Tree
+(require-package 'undo-tree)
+(global-undo-tree-mode)
+(setq-default undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
 ;;; Other packages
 ;;(require-package 'origami) ;; Code block folding, already in PurcellEmacs
 
 ;;; Performance
-(setq desktop-restore-eager 1)
+(setq-default desktop-restore-eager 1)
 
 ;;; Program language settings
 (load-file "~/.wy.emacs.d/wy-language-settings.el")

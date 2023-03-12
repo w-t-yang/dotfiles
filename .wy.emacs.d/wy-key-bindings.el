@@ -2,35 +2,53 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'init-elpa "~/.emacs.d/lisp/init-elpa.el")
+
+;; (require-package 'evil)
+;; (evil-mode 0)
+
 (global-set-key (kbd "RET") 'newline)
 
 (global-set-key (kbd "M-a") 'backward-paragraph)
 (global-set-key (kbd "M-e") 'forward-paragraph)
+
+;; M-c for consult
+(define-prefix-command 'consult-operations)
+(global-set-key (kbd "M-c") 'consult-operations)
+(global-set-key (kbd "M-c l") 'consult-line)
+(global-set-key (kbd "M-c i") 'consult-imenu)
+(global-set-key (kbd "M-c f") 'consult-find)
+(global-set-key (kbd "M-c e") 'consult-flymake)
+(global-set-key (kbd "M-c s") 'consult-eglot-symbols)
+
+;; M-g for go
 (global-set-key (kbd "M-g b") 'dumb-jump-back)
-(global-set-key (kbd "M-g e") 'embark-act)
 (global-set-key (kbd "M-g g") 'dumb-jump-go)
-(global-set-key (kbd "M-g i") 'consult-imenu)
 (global-set-key (kbd "M-g l") 'goto-line)
 (global-set-key (kbd "M-g o") 'org-open-at-point)
 
-(define-prefix-command 'window-operations)
-(global-set-key (kbd "C-o") 'window-operations)
-(global-set-key (kbd "C-o o") 'sanityinc/toggle-delete-other-windows)
-(global-set-key (kbd "M-1") 'sanityinc/toggle-delete-other-windows)
-(global-set-key (kbd "C-o i") 'delete-window)
-(global-set-key (kbd "M-0") 'delete-window)
-(global-set-key (kbd "C-o r") 'split-window-right)
-(global-set-key (kbd "C-o b") 'split-window-below)
-(global-set-key (kbd "C-o m s") 'wy-set-content-margin)
-(global-set-key (kbd "C-o m m") 'wy-toggle-content-margin)
+(global-set-key (kbd "C-o") 'next-window-any-frame)
 
-(global-set-key (kbd "M-o") 'next-window-any-frame)
+(define-prefix-command 'open-operations)
+(global-set-key (kbd "M-o") 'open-operations)
+(global-set-key (kbd "M-o e") 'embark-act)
+(global-set-key (kbd "M-o m s") 'wy-set-content-margin)
+(global-set-key (kbd "M-o m m") 'wy-toggle-content-margin)
+
 (global-set-key (kbd "M-q") 'kill-current-buffer)
+
+;; M-s for select(mark)/search
 (require-package 'rg)
 (global-set-key (kbd "M-s g") 'rg)
 (global-set-key (kbd "M-s s") 'ispell-word)
-;;(global-set-key (kbd "C-t") 'embark-act)
-(global-set-key (kbd "M-t") 'cycle-spacing)
+(global-set-key (kbd "M-s w") 'mark-word)
+(global-set-key (kbd "M-s f") 'mark-defun)
+
+(global-set-key (kbd "C-t") 'cycle-spacing)
+;; (global-set-key (kbd "M-t") 'cycle-spacing)
+
+(global-set-key (kbd "M-0") 'delete-window)
+(global-set-key (kbd "M-1") 'sanityinc/toggle-delete-other-windows)
 
 (global-set-key (kbd "C-<tab>") 'consult-buffer)
 (global-set-key (kbd "C-\\") 'session-jump-to-last-change)
@@ -53,6 +71,11 @@
             (local-unset-key (kbd "M-2"))
             (local-unset-key (kbd "M-3"))
             (local-unset-key (kbd "M-4"))
+            ))
+
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (local-set-key (kbd "M-k") 'eshell/clear)
             ))
 
 (defun wy-get-key-binding-func (key)
