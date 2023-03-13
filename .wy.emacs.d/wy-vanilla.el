@@ -117,8 +117,15 @@
 (global-undo-tree-mode)
 (setq-default undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
+;;; Smooth scroll
+(require-package 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+;; (scroll-lock-mode 1)
+;; (require-package 'smooth-scroll)
+
 ;;; Other packages
-;;(require-package 'origami) ;; Code block folding, already in PurcellEmacs
+(require-package 'origami) ;; Code block folding, already in PurcellEmacs
+(global-origami-mode 1)
 
 ;;; Performance
 (setq-default desktop-restore-eager 1)
