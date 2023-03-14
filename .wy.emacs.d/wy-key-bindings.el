@@ -73,6 +73,10 @@
             (local-unset-key (kbd "M-4"))
             ))
 
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (local-unset-key (kbd "C-o"))))
+
 (add-hook 'eshell-mode-hook
           (lambda ()
             (local-set-key (kbd "M-k") 'eshell/clear)
