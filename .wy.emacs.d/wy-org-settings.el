@@ -32,13 +32,18 @@
   (if (equal "org capture" (frame-parameter nil 'name))
       (delete-frame)))
 
-(defvar wy-org-capture-categories
-  `(("t" "todo")
-    ("w" "work")
-    ("e" "emacs")
-    ("n" "note")
-    ("i" "idea"))
-  )
+(defvar wy-org-capture-categories ())
+(setq-default wy-org-capture-categories
+              `(
+                ("1" "WZServer" ,(format "%s/captured/%s.org" org-project-root "wenzhai-server"))
+                ("2" "WZiOS" ,(format "%s/captured/%s.org" org-project-root "wenzhai-ios"))
+                ("e" "emacs" ,org-capture-file)
+                ("i" "idea" ,org-capture-file)
+                ("n" "note" ,org-capture-file)
+                ("t" "todo" ,org-capture-file)
+                ("w" "work" ,org-capture-file)
+                )
+              )
 
 (defvar wy-generated-org-capture-templates ())
 
@@ -48,17 +53,18 @@
   (dolist (item wy-org-capture-categories)
     (let ((key (car item))
           (tag (car (cdr item)))
+          (file (car (cdr (cdr item))))
           )
-      (push `(,key ,tag entry (file+olp+datetree ,org-capture-file)
+      (push `(,key ,tag entry (file+olp+datetree ,file)
                    ,(concat "\n* %? :" tag ":\n%U\nLink: %a")
-                   :clock-resume t)
+                   :clock-resume t
+                   :prepend t)
             wy-generated-org-capture-templates)
       )
     )
   )
 (wy-generate-org-capture-templates)
-
-(setq-default org-capture-templates wy-generated-org-capture-templates)
+(setq-default org-capture-templates (reverse wy-generated-org-capture-templates))
 
 ;; (require-package 'noflet)
 
@@ -82,6 +88,10 @@
 
 ;; org-reveal for presentation in Emacs
 (require-package 'ox-reveal)
+
+;; org-roam
+;; (require-package 'org-roam)
+;; (setq-default org-roam-directory (format "%s/%s" org-project-root "roam"))
 
 (provide 'wy-org-settings)
 ;;; wy-org-settings.el ends here
