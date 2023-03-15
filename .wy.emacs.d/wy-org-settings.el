@@ -20,6 +20,16 @@
 (defvar org-project-root "~/Projects/orgfiles")
 (defvar org-capture-file (format "%s/%s.org" org-project-root "captured"))
 
+(setq org-agenda-files
+      (directory-files-recursively
+       org-project-root
+       "\\.org$"
+       t
+       (lambda (k)
+         (not (string-match "\\(blog\\|archived\\)" k)))
+       )
+      )
+
 (defadvice org-capture-finalize
     (after delete-capture-frame activate)
   "Advise capture-finalize to close the frame."
