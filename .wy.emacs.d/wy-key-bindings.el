@@ -21,6 +21,18 @@
 (global-set-key (kbd "M-c e") 'consult-flymake)
 (global-set-key (kbd "M-c s") 'consult-eglot-symbols)
 
+;; M-m for mark
+(require-package 'expand-region)
+(define-prefix-command 'mark-operations)
+(global-set-key (kbd "M-m") 'mark-operations)
+(global-set-key (kbd "M-m '") 'er/mark-inside-quotes)
+(global-set-key (kbd "M-m f") 'er/mark-defun)
+(global-set-key (kbd "M-m i") 'er/mark-inside-pairs)
+(global-set-key (kbd "M-m o") 'er/mark-outside-pairs)
+(global-set-key (kbd "M-m p") 'er/mark-paragraph)
+(global-set-key (kbd "M-m s") 'er/mark-symbol)
+(global-set-key (kbd "M-m w") 'er/mark-subword)
+
 ;; M-g for go
 (global-set-key (kbd "M-g b") 'dumb-jump-back)
 (global-set-key (kbd "M-g g") 'dumb-jump-go)
@@ -41,14 +53,18 @@
 (require-package 'rg)
 (global-set-key (kbd "M-s g") 'rg)
 (global-set-key (kbd "M-s s") 'ispell-word)
-(global-set-key (kbd "M-s w") 'mark-word)
-(global-set-key (kbd "M-s f") 'mark-defun)
 
 (global-set-key (kbd "C-t") 'cycle-spacing)
 ;; (global-set-key (kbd "M-t") 'cycle-spacing)
 
 (global-set-key (kbd "M-0") 'delete-window)
 (global-set-key (kbd "M-1") 'sanityinc/toggle-delete-other-windows)
+
+;; C-M-d down-list conflicts with Mac system shortcut "look up in dictionary"
+(global-set-key (kbd "C-M-g") 'down-list)
+(global-set-key (kbd "C-M-m") 'mark-sexp)
+(global-set-key (kbd "C-M-,") 'er/mark-outside-pairs)
+(global-set-key (kbd "C-M-.") 'er/mark-inside-pairs)
 
 (global-set-key (kbd "C-<tab>") 'consult-buffer)
 (global-set-key (kbd "C-\\") 'session-jump-to-last-change)
