@@ -14,14 +14,6 @@
 ;;   solargraph bundle
 ;;   solargraph config
 ;;   solargraph scan -v
-
-;;; Javascript & Typescript & tsx
-;; Typescript language server
-;; [https://github.com/typescript-language-server/typescript-language-server]
-;; Install
-;;   npm install -g typescript-language-server typescript
-;; Run
-;;   typescript-language-server --stdio
 (defun wy-run-rubocop ()
   "Run rubocop autofix in current project."
   (interactive)
@@ -30,6 +22,13 @@
   )
 (global-set-key (kbd "C-c r r") 'wy-run-rubocop)
 
+;;; Javascript & Typescript & tsx
+;; Typescript language server
+;; [https://github.com/typescript-language-server/typescript-language-server]
+;; Install
+;;   npm install -g typescript-language-server typescript
+;; [Optional] Run language server manually
+;;   typescript-language-server --stdio
 (require 'typescript-mode)
 (add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
 (setq typescript-indent-level 2)

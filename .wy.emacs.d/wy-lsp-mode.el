@@ -1,6 +1,8 @@
 ;;; wy-lsp-mode.el --- lsp-mode configs
 ;;; Commentary:
 ;;; Configs for lsp-mode
+;;; !!! Deprecated !!!
+;;; !!! Fully migrated to eglot from lsp !!!
 
 ;;; Code:
 
