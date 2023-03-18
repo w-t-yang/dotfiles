@@ -13,7 +13,7 @@
 (setq-default
  ;;org-bullets-bullet-list '("❄" "❄" "❄" "❄" "☢")
  org-bullets-bullet-list '("⦿" "◉" "●" "○" "・")
- org-list-demote-modify-bullet '(("+" . "-") ("-" . "+") ("*" . "+"))
+ org-list-demote-modify-bullet '(("-" . "+") ("+" . "-") ("-" . "+"))
  org-list-allow-alphabetical t
  )
 

@@ -12,27 +12,30 @@
 
 ;;; Themes
 (require 'init-themes "~/.emacs.d/lisp/init-themes.el")
-;;(load-theme 'sanityinc-tomorrow-day)
-;;(load-theme 'sanityinc-tomorrow-night)
-;;(load-theme 'sanityinc-tomorrow-bright)
-;;(load-theme 'sanityinc-tomorrow-eighties)
-;;(load-theme 'sanityinc-solarized-light)
+
+;; doom-themes & material-theme are not compatible with line number coloum background
+;; (require-package 'doom-themes)
+;; (require-package 'material-theme)
+;; (require-package 'zenburn-theme)
+
+(defvar wy-custom-theme)
+;; (setq wy-custom-theme 'doom-dracula)
+;; (setq wy-custom-theme 'doom-one)
+;; (setq wy-custom-theme 'doom-xcode)
+;; (setq wy-custom-theme 'material)
+;; (setq wy-custom-theme 'material-light)
+(setq wy-custom-theme 'sanityinc-solarized-light)
+;; (setq wy-custom-theme 'sanityinc-tomorrow-bright)
+;; (setq wy-custom-theme 'sanityinc-tomorrow-day)
+;; (setq wy-custom-theme 'sanityinc-tomorrow-eighties)
+;; (setq wy-custom-theme 'sanityinc-tomorrow-night)
+;; (setq wy-custom-theme 'zenburn)
 
 ;; Instead of calling 'load-theme', it's better to set custom-enabled-themes
 ;; and use 'reapply-themes' from 'init-themes' to forcibly load themes
 ;; This help to keep a clean list of enabled themes
-(setq custom-enabled-themes '(sanityinc-tomorrow-eighties))
+(setq custom-enabled-themes `(,wy-custom-theme))
 (reapply-themes)
-
-;;(require-package 'zenburn-theme)
-;;(load-theme 'zenburn)
-
-;;(require-package 'material-theme)
-;;(load-theme 'material)
-;;(load-theme 'material-light)
-
-;; doom-themes are not compatible with line number coloum background
-;;(require-package 'doom-themes)
 
 (set-face-attribute 'default nil :family "Source Code Pro" :height 160)
 (setq-default fill-column 80)
@@ -40,6 +43,7 @@
 
 ;; (require-package 'vscode-dark-plus-theme)
 ;; (load-theme 'vscode-dark-plus)
+
 ;; (require-package 'solaire-mode)
 ;; (solaire-mode +1)
 

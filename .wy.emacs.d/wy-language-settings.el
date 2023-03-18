@@ -42,7 +42,6 @@
   )
 (add-hook 'web-mode-hook  'web-mode-init-hook)
 
-
 ;;; Swift
 (require-package 'swift-mode)
 

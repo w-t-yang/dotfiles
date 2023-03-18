@@ -63,13 +63,14 @@
 ;; C-M-d down-list conflicts with Mac system shortcut "look up in dictionary"
 (global-set-key (kbd "C-M-g") 'down-list)
 (global-set-key (kbd "C-M-m") 'mark-sexp)
-(global-set-key (kbd "C-M-,") 'er/mark-outside-pairs)
-(global-set-key (kbd "C-M-.") 'er/mark-inside-pairs)
+(global-set-key (kbd "C-M-,") 'er/expand-region)
+(global-set-key (kbd "C-M-.") 'er/contract-region)
 
 (global-set-key (kbd "C-<tab>") 'consult-buffer)
 (global-set-key (kbd "C-\\") 'session-jump-to-last-change)
 (global-set-key (kbd "C-|") 'split-window-right)
-(global-set-key (kbd "C-_") 'split-window-below)
+;; Conflict with undo-tree
+;; (global-set-key (kbd "C-_") 'split-window-below)
 (global-set-key (kbd "M--") 'shrink-window-horizontally)
 (global-set-key (kbd "M-=") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-_") 'shrink-window)
