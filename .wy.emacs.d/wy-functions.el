@@ -142,4 +142,23 @@
 
 (add-hook 'buffer-list-update-hook 'wy-highlight-selected-window)
 
+;; https://whatacold.io/blog/2022-05-23-emacs-duplicate-line/
+(defun wy-duplicate-line(comment-first)
+  "Duplicate the current line, comment line if COMMENT-FIRST is set."
+  (interactive "P")
+  (let ((line-text (buffer-substring-no-properties
+                    (line-beginning-position)
+                    (line-end-position))))
+    (save-excursion
+      (if comment-first
+          (progn
+            (comment-line 1)
+            (move-beginning-of-line 1)
+            (open-line 1))
+        (move-end-of-line 1)
+        (open-line 1)
+        (forward-char))
+      (insert line-text))
+    (forward-line)))
+
 ;;; wy-functions.el ends here

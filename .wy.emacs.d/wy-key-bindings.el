@@ -77,8 +77,12 @@
 (global-set-key (kbd "M-+") 'enlarge-window)
 (global-set-key (kbd "C-,") 'xref-find-definitions)
 (global-set-key (kbd "C-.") 'xref-find-references)
+(global-set-key (kbd "C-M-o") 'wy-duplicate-line)
+(global-set-key (kbd "C-M-r") 'repeat)
 (global-set-key (kbd "C-M-v") 'scroll-other-window)
 (global-set-key (kbd "M-V") 'scroll-other-window-down)
+(global-set-key (kbd "C-M-<left>") 'flymake-goto-prev-error)
+(global-set-key (kbd "C-M-<right>") 'flymake-goto-next-error)
 
 (add-hook 'magit-mode-hook
           (lambda ()
