@@ -127,6 +127,11 @@
 ;; (scroll-lock-mode 1)
 ;; (require-package 'smooth-scroll)
 
+;;; Eshell
+;; alias ~/.emacs.d/eshell/alias
+(require-package 'esh-autosuggest)
+(add-hook 'eshell-mode-hook #'esh-autosuggest-mode)
+
 ;;; Other packages
 (require-package 'origami) ;; Code block folding, already in PurcellEmacs
 (global-origami-mode 1)
