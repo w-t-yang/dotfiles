@@ -72,6 +72,68 @@
 
 (winner-mode t)
 
+;; Mode line
+(setcdr (assq 'vc-mode mode-line-format)
+        '((:eval (replace-regexp-in-string "^ Git" (projectile-project-name) vc-mode))))
+
+;; Original value of 'flymake-mode-line-format'
+;; (" " flymake-mode-line-title flymake-mode-line-exception flymake-mode-line-counters)
+(setq-default flymake-mode-line-format '("" "" flymake-mode-line-exception flymake-mode-line-counters))
+
+;; Whitelist minor modes
+;; When not sure what values to set in the list
+;; print minor-mode-alist to get a full list of minor modes
+;; (print minor-mode-alist)
+(defun wy-purge-minor-modes ()
+  "Purge minor modes."
+  (setq minor-mode-alist '((flymake-mode flymake-mode-line-format)))
+  )
+(add-hook 'after-change-major-mode-hook 'wy-purge-minor-modes)
+
+;; Copy & past from 'binding.el'
+;; Removed "(" and ")"
+(setq mode-line-modes
+      (let ((recursive-edit-help-echo
+             "Recursive edit, type M-C-c to get out"))
+        (list (propertize "%[" 'help-echo recursive-edit-help-echo)
+              `(:propertize ("" mode-name)
+                            help-echo "Major mode\n\
+mouse-1: Display major mode menu\n\
+mouse-2: Show help for major mode\n\
+mouse-3: Toggle minor modes"
+                            mouse-face mode-line-highlight
+                            local-map ,mode-line-major-mode-keymap)
+              '("" mode-line-process)
+              `(:propertize ("" minor-mode-alist)
+                            mouse-face mode-line-highlight
+                            help-echo "Minor mode\n\
+mouse-1: Display minor mode menu\n\
+mouse-2: Show help for minor mode\n\
+mouse-3: Toggle minor modes"
+                            local-map ,mode-line-minor-mode-keymap)
+              (propertize "%n" 'help-echo "mouse-2: Remove narrowing from buffer"
+                          'mouse-face 'mode-line-highlight
+                          'local-map (make-mode-line-mouse-map
+                                      'mouse-2 #'mode-line-widen))
+              (propertize "%]" 'help-echo recursive-edit-help-echo)
+              " "))
+      )
+
+;; (require-package 'delight)
+;; (delight '(
+;;            (elisp-slime-nav-mode nil elisp-slime-nav)
+;;            (paredit-mode nil paredit)
+;;            (aggressive-indent-mode nil aggressive-indent)
+;;            (projectile-mode nil projectile)
+;;            (buffer-face-mode nil buffer-face)
+;;            (undo-tree-mode nil undo-tree)
+;;            (eldoc-mode nil eldoc)
+;;            ;; To re-enable minor mode
+;;            ;; (eldoc-mode " Eldoc" eldoc)
+;;            (robe-mode nil robe)
+;;            (projectile-rails-mode nil projectile-rails)
+;;            ))
+
 ;;; Remote
 ;; (setq tramp-verbose 6)
 ;; (defvar ivy-rich-parse-remote-buffer nil)
