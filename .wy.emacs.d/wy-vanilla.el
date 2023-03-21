@@ -72,7 +72,11 @@
 
 (winner-mode t)
 
-;; Mode line
+;;; Control mode - https://github.com/stephendavidmarsh/control-mode
+(require-package 'control-mode)
+(control-mode-localized-setup)
+
+;;; Mode line
 (setcdr (assq 'vc-mode mode-line-format)
         '((:eval (replace-regexp-in-string "^ Git" (projectile-project-name) vc-mode))))
 
@@ -86,7 +90,10 @@
 ;; (print minor-mode-alist)
 (defun wy-purge-minor-modes ()
   "Purge minor modes."
-  (setq minor-mode-alist '((flymake-mode flymake-mode-line-format)))
+  (setq minor-mode-alist '(
+                           (flymake-mode flymake-mode-line-format)
+                           (control-mode " <C>")
+                           ))
   )
 (add-hook 'after-change-major-mode-hook 'wy-purge-minor-modes)
 

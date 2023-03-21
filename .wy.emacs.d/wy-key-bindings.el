@@ -5,9 +5,12 @@
 (require 'init-elpa "~/.emacs.d/lisp/init-elpa.el")
 
 ;; (require-package 'evil)
-;; (evil-mode 0)
+;; (evil-mode 1)
 
 (global-set-key (kbd "RET") 'newline)
+
+(global-set-key (kbd "C-x f") 'find-file)
+(global-set-key (kbd "C-x s") 'save-buffer)
 
 (global-set-key (kbd "M-a") 'backward-paragraph)
 (global-set-key (kbd "M-e") 'forward-paragraph)
@@ -77,6 +80,7 @@
 (global-set-key (kbd "M-+") 'enlarge-window)
 (global-set-key (kbd "C-,") 'xref-find-definitions)
 (global-set-key (kbd "C-.") 'xref-find-references)
+(global-set-key (kbd "M-.") 'xref-pop-marker-stack)
 (global-set-key (kbd "C-M-o") 'wy-duplicate-line)
 (global-set-key (kbd "C-M-r") 'repeat)
 (global-set-key (kbd "C-M-v") 'scroll-other-window)
