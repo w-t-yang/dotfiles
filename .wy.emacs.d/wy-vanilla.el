@@ -220,5 +220,8 @@ mouse-3: Toggle minor modes"
 ;;; Custom functions
 (load-file "~/.wy.emacs.d/wy-functions.el")
 
+;;; svg-lib [WIP]
+;; (load-file "~/.wy.emacs.d/wy-svg-lib.el")
+
 (provide 'wy-vanilla)
 ;;; wy-vanilla.el ends here
