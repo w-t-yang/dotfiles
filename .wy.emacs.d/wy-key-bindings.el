@@ -64,7 +64,10 @@
 (global-set-key (kbd "M-1") 'sanityinc/toggle-delete-other-windows)
 
 ;; C-M-d down-list conflicts with Mac system shortcut "look up in dictionary"
-(global-set-key (kbd "C-M-g") 'down-list)
+
+;; Don't set C-M-g to any function, otherwise C-g won't work in control-mode
+;; (global-set-key (kbd "C-M-g") 'conflict-with-control-mode)
+
 (global-set-key (kbd "C-M-m") 'mark-sexp)
 (global-set-key (kbd "C-M-,") 'er/expand-region)
 (global-set-key (kbd "C-M-.") 'er/contract-region)
