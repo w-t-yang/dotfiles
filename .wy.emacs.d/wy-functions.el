@@ -130,14 +130,12 @@
 (global-set-key (kbd "M-3") 'wy-split-3-windows)
 (global-set-key (kbd "M-4") 'wy-split-4-windows)
 
-(defvar wy-other-window-background (face-attribute 'fringe :background))
-
 (defun wy-highlight-selected-window ()
   "Highlight selected window."
   (walk-windows (lambda (w)
                   (unless (eq w (selected-window))
                     (with-current-buffer (window-buffer w)
-                      (buffer-face-set `(:background ,wy-other-window-background))))))
+                      (buffer-face-set `(:background ,(face-attribute 'fringe :background)))))))
   (buffer-face-set 'default))
 
 (add-hook 'buffer-list-update-hook 'wy-highlight-selected-window)
