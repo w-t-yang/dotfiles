@@ -159,4 +159,35 @@
       (insert line-text))
     (forward-line)))
 
+(defun wy-consult-in-other-buffer ()
+  "Assume 2 frames are open, working in the main buffer.
+Switch to the other buffer, and run 'consult-buffer'."
+  (interactive)
+  (next-window-any-frame)
+  (consult-buffer)
+  (next-window-any-frame)
+  )
+
+(defun wy-switch-buffers ()
+  "Assume 2 frames are open, switch content in 2 buffers."
+  (interactive)
+  (let (
+        (main-buffer (buffer-name))
+        (main-point (point))
+        (other-buffer (buffer-name))
+        (other-point (point))
+        )
+    (progn
+      (next-window-any-frame)
+      (setq other-buffer (buffer-name))
+      (setq other-point (point))
+      (switch-to-buffer main-buffer)
+      (goto-char main-point)
+      (next-window-any-frame)
+      (switch-to-buffer other-buffer)
+      (goto-char other-point)
+      )
+    )
+  )
+
 ;;; wy-functions.el ends here

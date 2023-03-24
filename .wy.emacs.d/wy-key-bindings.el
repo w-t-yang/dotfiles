@@ -73,6 +73,8 @@
 (global-set-key (kbd "C-M-.") 'er/contract-region)
 
 (global-set-key (kbd "C-<tab>") 'consult-buffer)
+(global-set-key (kbd "C-x <tab>") 'wy-consult-in-other-buffer)
+(global-set-key (kbd "C-x C-<tab>") 'wy-switch-buffers)
 (global-set-key (kbd "C-\\") 'session-jump-to-last-change)
 (global-set-key (kbd "C-|") 'split-window-right)
 ;; Conflict with undo-tree
