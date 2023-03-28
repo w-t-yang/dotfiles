@@ -10,6 +10,8 @@
 
 ;;(load-file "~/.wy.emacs.d/wy-explorer.el")
 
+(set-frame-parameter (selected-frame) 'alpha '(95 95))
+
 ;;; Themes
 (require 'init-themes "~/.emacs.d/lisp/init-themes.el")
 
@@ -24,10 +26,10 @@
 ;; (setq wy-custom-theme 'doom-xcode)
 ;; (setq wy-custom-theme 'material)
 ;; (setq wy-custom-theme 'material-light)
-(setq wy-custom-theme 'sanityinc-solarized-light)
+;; (setq wy-custom-theme 'sanityinc-solarized-light)
 ;; (setq wy-custom-theme 'sanityinc-tomorrow-bright)
 ;; (setq wy-custom-theme 'sanityinc-tomorrow-day)
-;; (setq wy-custom-theme 'sanityinc-tomorrow-eighties)
+(setq wy-custom-theme 'sanityinc-tomorrow-eighties)
 ;; (setq wy-custom-theme 'sanityinc-tomorrow-night)
 ;; (setq wy-custom-theme 'zenburn)
 
@@ -73,8 +75,13 @@
 (winner-mode t)
 
 ;;; Control mode - https://github.com/stephendavidmarsh/control-mode
-(require-package 'control-mode)
-(control-mode-localized-setup)
+;; (require-package 'control-mode)
+;; (control-mode-localized-setup)
+
+;;; God mode - https://github.com/emacsorphanage/god-mode
+(require-package 'god-mode)
+(global-set-key (kbd "<escape>") #'god-local-mode)
+(setq-default god-mode-lighter-string "<G>")
 
 ;;; Mode line
 (setcdr (assq 'vc-mode mode-line-format)
@@ -93,6 +100,7 @@
   (setq minor-mode-alist '(
                            (flymake-mode flymake-mode-line-format)
                            (control-mode " <C>")
+                           (god-local-mode " <G>")
                            ))
   )
 (add-hook 'after-change-major-mode-hook 'wy-purge-minor-modes)

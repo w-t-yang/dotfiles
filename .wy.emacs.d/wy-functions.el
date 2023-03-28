@@ -159,7 +159,7 @@
       (insert line-text))
     (forward-line)))
 
-(defun wy-consult-in-other-buffer ()
+(defun wy-consult-buffer-other-window ()
   "Assume 2 frames are open, working in the main buffer.
 Switch to the other buffer, and run 'consult-buffer'."
   (interactive)

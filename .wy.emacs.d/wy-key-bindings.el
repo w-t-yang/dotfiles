@@ -18,11 +18,15 @@
 ;; M-c for consult
 (define-prefix-command 'consult-operations)
 (global-set-key (kbd "M-c") 'consult-operations)
-(global-set-key (kbd "M-c l") 'consult-line)
-(global-set-key (kbd "M-c i") 'consult-imenu)
-(global-set-key (kbd "M-c f") 'consult-find)
 (global-set-key (kbd "M-c e") 'consult-flymake)
+(global-set-key (kbd "M-c f") 'consult-find)
+(global-set-key (kbd "M-c g") 'consult-ripgrep)
+(global-set-key (kbd "M-c h") 'consult-history)
+(global-set-key (kbd "M-c i") 'consult-imenu)
+(global-set-key (kbd "M-c l") 'consult-line)
+(global-set-key (kbd "M-c o") 'consult-outline)
 (global-set-key (kbd "M-c s") 'consult-eglot-symbols)
+(global-set-key (kbd "M-c t") 'consult-theme)
 
 ;; M-m for mark
 (require-package 'expand-region)
@@ -73,7 +77,7 @@
 (global-set-key (kbd "C-M-.") 'er/contract-region)
 
 (global-set-key (kbd "C-<tab>") 'consult-buffer)
-(global-set-key (kbd "C-x <tab>") 'wy-consult-in-other-buffer)
+(global-set-key (kbd "C-x <tab>") 'wy-consult-buffer-other-window)
 (global-set-key (kbd "C-x C-<tab>") 'wy-switch-buffers)
 (global-set-key (kbd "C-\\") 'session-jump-to-last-change)
 (global-set-key (kbd "C-|") 'split-window-right)
