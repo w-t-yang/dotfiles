@@ -111,6 +111,10 @@
           (lambda ()
             (local-unset-key (kbd "C-o"))))
 
+(add-hook 'rg-mode-hook
+          (lambda ()
+            (local-unset-key (kbd "C-o"))))
+
 (add-hook 'eshell-mode-hook
           (lambda ()
             (local-set-key (kbd "M-k") 'eshell/clear)

@@ -79,7 +79,7 @@
 ;; (require-package 'noflet)
 
 (defun make-capture-frame ()
-  "Create a new frame and run 'org-capture'."
+  "Create a new frame and run org capture."
   (interactive)
   (make-frame '((name . "org capture")
                 (width . 80)
@@ -102,6 +102,12 @@
 ;; org-roam
 ;; (require-package 'org-roam)
 ;; (setq-default org-roam-directory (format "%s/%s" org-project-root "roam"))
+
+;; ob-mermaid
+;; https://github.com/arnm/ob-mermaid
+(require-package 'ob-mermaid)
+(require 'ob-mermaid)
+(setq ob-mermaid-cli-path "/Users/William/Library/pnpm/mmdc")
 
 (provide 'wy-org-settings)
 ;;; wy-org-settings.el ends here
