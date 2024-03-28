@@ -1,0 +1,37 @@
+# Enable colors for ls
+# export CLICOLOR=1
+# export LSCOLORS=ExFxBxDxCxegedabagacad
+# or
+eval `gdircolors ~/.dir_colors`
+alias ls='gls --color=always'
+alias dir='gdir --color=auto'
+alias grep='grep --color=auto'
+
+# Set up prompt
+if [ -f ~/.git-prompt.sh ]; then
+    . ~/.git-prompt.sh
+    GIT_PS1_SHOWCOLORHINTS=1
+    setopt PROMPT_SUBST ; PS1='[%c$(__git_ps1 " (%s)")]\$ '
+    # setopt PROMPT_SUBST ; PS1='[%~$(__git_ps1 " (%s)")]\$ '
+fi
+
+# After install coreutils
+PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+
+eval "$(pyenv init -)"
+eval "$(rbenv init - zsh)"
+
+# tmux
+alias ta="tmux attach"
+alias tl="tmux list-sessions"
+# tmux end
+
+# pnpm
+export PNPM_HOME="/Users/William/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+alias npm="pnpm"
+# pnpm end
