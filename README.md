@@ -44,7 +44,7 @@ brew install --cask emacs
 brew reinstall --cask emacs --no-quarantine
 ```
 
-### Install with binary
+### Install with binary [Preferred]
 https://emacsformacosx.com/
 
 
@@ -63,6 +63,46 @@ times to make sure everything is properly installed.
 - Use `~/.emacs.d/eshell/alias` to set alias in eshel
 - [ALWAYS] Map 'Capslock' to 'Control'
 
+## Programming Language Env Setup
+### Python
+https://github.com/pyenv/pyenv
+```
+brew install pyenv
+# restart shell
+```
+
+### Ruby
+https://github.com/rbenv/rbenv
+```
+brew install rbenv ruby-build
+# restart shell
+```
+
+### Node
+```
+brew install node
+# or brew upgrade node
+```
+
+pnpm - https://github.com/pnpm/pnpm
+```
+brew install pnpm
+# add alias to .zshrc -> alias npm="pnpm"
+```
+
+#### Mermaid
+
+Install mermaid https://github.com/mermaid-js/mermaid
+```
+pnpm install -g mermaid
+```
+
+Install mermaid-cli https://github.com/mermaid-js/mermaid-cli
+```
+pnpm install -g @mermaid-js/mermaid-cli
+```
+
+Integrate Mermaid with Org-mode https://github.com/arnm/ob-mermaid
 
 ## Misc
 ### Terminal
