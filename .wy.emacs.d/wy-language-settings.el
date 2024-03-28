@@ -101,4 +101,22 @@
 
 ;;(add-hook 'swift-mode-hook 'eglot-ensure)
 
+;;; XML
+(setq nxml-child-indent 4 nxml-attribute-indent 4)
+
+;;; Java
+(defvar lombok-path (substitute-in-file-name "$HOME/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar"))
+(defvar jvm-arg1 (format "--jvm-arg=-javaagent:%s" lombok-path))
+(defvar jvm-arg2 (format "--jvm-arg=-Xbootclasspath/a:%s" lombok-path))
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               `(java-mode . ("jdtls" ,jvm-arg1 ,jvm-arg2))
+               ))
+
+(defun on-java-loaded ()
+  "Override key bindings in java mode."
+  (define-key java-mode-map (kbd "M-q") 'kill-current-buffer))
+
+(add-hook 'java-mode-hook 'on-java-loaded)
+
 ;;; wy-language-settings.el ends here

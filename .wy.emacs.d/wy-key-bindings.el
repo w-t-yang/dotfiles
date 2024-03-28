@@ -30,6 +30,7 @@
 
 ;; M-m for mark
 (require-package 'expand-region)
+(require 'expand-region)
 (define-prefix-command 'mark-operations)
 (global-set-key (kbd "M-m") 'mark-operations)
 (global-set-key (kbd "M-m '") 'er/mark-inside-quotes)
@@ -50,9 +51,16 @@
 
 (define-prefix-command 'open-operations)
 (global-set-key (kbd "M-o") 'open-operations)
+(global-set-key (kbd "M-o d") 'eldoc)
 (global-set-key (kbd "M-o e") 'embark-act)
 (global-set-key (kbd "M-o m s") 'wy-set-content-margin)
 (global-set-key (kbd "M-o m m") 'wy-toggle-content-margin)
+
+(require-package 'git-link)
+(require 'git-link)
+(setq git-link-open-in-browser t)
+(global-set-key (kbd "M-o g") 'git-link)
+
 
 (global-set-key (kbd "M-q") 'kill-current-buffer)
 
@@ -89,7 +97,8 @@
 (global-set-key (kbd "M-+") 'enlarge-window)
 (global-set-key (kbd "C-,") 'xref-find-definitions)
 (global-set-key (kbd "C-.") 'xref-find-references)
-(global-set-key (kbd "M-.") 'xref-pop-marker-stack)
+(global-set-key (kbd "M-,") 'xref-go-back)
+(global-set-key (kbd "M-.") 'xref-go-forward)
 (global-set-key (kbd "C-M-o") 'wy-duplicate-line)
 (global-set-key (kbd "C-M-r") 'repeat)
 (global-set-key (kbd "C-M-v") 'scroll-other-window)
