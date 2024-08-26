@@ -119,4 +119,9 @@
 
 (add-hook 'java-mode-hook 'on-java-loaded)
 
+
+;;; Shell
+(require-package 'flymake-shell)
+(require-package 'flymake-shellcheck)
+
 ;;; wy-language-settings.el ends here

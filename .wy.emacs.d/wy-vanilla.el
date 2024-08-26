@@ -29,9 +29,10 @@
 ;; (setq wy-custom-theme 'sanityinc-solarized-light)
 ;; (setq wy-custom-theme 'sanityinc-tomorrow-bright)
 ;; (setq wy-custom-theme 'sanityinc-tomorrow-day)
-(setq wy-custom-theme 'sanityinc-tomorrow-eighties)
+;; (setq wy-custom-theme 'sanityinc-tomorrow-eighties)
 ;; (setq wy-custom-theme 'sanityinc-tomorrow-night)
-;; (setq wy-custom-theme 'zenburn)
+;; (setq wy-custom-theme 'sanityinc-tomorrow-blue)
+(setq wy-custom-theme 'zenburn)
 
 ;; Instead of calling 'load-theme', it's better to set custom-enabled-themes
 ;; and use 'reapply-themes' from 'init-themes' to forcibly load themes
@@ -42,6 +43,8 @@
 (set-face-attribute 'default nil :family "Source Code Pro" :height 160)
 (setq-default fill-column 80)
 (global-display-fill-column-indicator-mode)
+
+(require-package 'highlight-indentation)
 
 ;; (require-package 'vscode-dark-plus-theme)
 ;; (load-theme 'vscode-dark-plus)
@@ -194,9 +197,15 @@ mouse-3: Toggle minor modes"
 (add-to-list 'auto-mode-alist '("\\.http$" . restclient-mode))
 
 ;;; Undo Tree
-(require-package 'undo-tree)
-(global-undo-tree-mode)
-(setq-default undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+;; (require-package 'undo-tree)
+;; (global-undo-tree-mode)
+;; (setq-default undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+;; (setq-default undo-tree-enable-undo-in-region nil)
+
+;;; snippets
+(require-package 'yasnippet)
+(require-package 'yasnippet-snippets)
+(yas-global-mode 1)
 
 ;;; Smooth scroll
 (require-package 'smooth-scrolling)
@@ -228,8 +237,14 @@ mouse-3: Toggle minor modes"
 ;;; Custom functions
 (load-file "~/.wy.emacs.d/wy-functions.el")
 
+;;; Settings for java development
+(load-file "~/.wy.emacs.d/wy-java.el")
+
 ;;; svg-lib [WIP]
 ;; (load-file "~/.wy.emacs.d/wy-svg-lib.el")
+
+;;; Functions & Settings for Booking.com work laptop
+(load-file "~/.wy.emacs.d/wy-booking.el")
 
 (provide 'wy-vanilla)
 ;;; wy-vanilla.el ends here
