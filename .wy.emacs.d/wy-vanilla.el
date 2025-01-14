@@ -244,7 +244,7 @@ mouse-3: Toggle minor modes"
 ;; (load-file "~/.wy.emacs.d/wy-svg-lib.el")
 
 ;;; Functions & Settings for Booking.com work laptop
-(load-file "~/.wy.emacs.d/wy-booking.el")
+;; (load-file "~/.wy.emacs.d/wy-booking.el")
 
 (provide 'wy-vanilla)
 ;;; wy-vanilla.el ends here

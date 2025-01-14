@@ -18,8 +18,8 @@ fi
 # After install coreutils
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
-# eval "$(pyenv init -)"
-# eval "$(rbenv init - zsh)"
+eval "$(pyenv init -)"
+eval "$(rbenv init - zsh)"
 
 # tmux
 alias ta="tmux attach"
