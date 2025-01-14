@@ -8,7 +8,7 @@
 
 (require 'init-elpa "~/.emacs.d/lisp/init-elpa.el")
 
-;;(load-file "~/.wy.emacs.d/wy-explorer.el")
+;;(load-file "~/.wy/emacs.d/wy-explorer.el")
 
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 
@@ -226,25 +226,25 @@ mouse-3: Toggle minor modes"
 (setq-default desktop-restore-eager 1)
 
 ;;; Program language settings
-(load-file "~/.wy.emacs.d/wy-language-settings.el")
+(load-file "~/.wy/emacs.d/wy-language-settings.el")
 
 ;;; Key Bindings
-(load-file "~/.wy.emacs.d/wy-key-bindings.el")
+(load-file "~/.wy/emacs.d/wy-key-bindings.el")
 
 ;;; Org-mode settings
-(load-file "~/.wy.emacs.d/wy-org-settings.el")
+(load-file "~/.wy/emacs.d/wy-org-settings.el")
 
 ;;; Custom functions
-(load-file "~/.wy.emacs.d/wy-functions.el")
+(load-file "~/.wy/emacs.d/wy-functions.el")
 
 ;;; Settings for java development
-(load-file "~/.wy.emacs.d/wy-java.el")
+(load-file "~/.wy/emacs.d/wy-java.el")
 
 ;;; svg-lib [WIP]
-;; (load-file "~/.wy.emacs.d/wy-svg-lib.el")
+;; (load-file "~/.wy/emacs.d/wy-svg-lib.el")
 
 ;;; Functions & Settings for Booking.com work laptop
-;; (load-file "~/.wy.emacs.d/wy-booking.el")
+;; (load-file "~/.wy/emacs.d/wy-booking.el")
 
 (provide 'wy-vanilla)
 ;;; wy-vanilla.el ends here

@@ -8,8 +8,8 @@ alias dir='gdir --color=auto'
 alias grep='grep --color=auto'
 
 # Set up prompt
-if [ -f ~/.git-prompt.sh ]; then
-    . ~/.git-prompt.sh
+if [ -f ~/.wy/git-prompt.sh ]; then
+    . ~/.wy/git-prompt.sh
     GIT_PS1_SHOWCOLORHINTS=1
     setopt PROMPT_SUBST ; PS1='[%c$(__git_ps1 " (%s)")]\$ '
     # setopt PROMPT_SUBST ; PS1='[%~$(__git_ps1 " (%s)")]\$ '

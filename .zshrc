@@ -1,1 +1,0 @@
-source ~/.wy_profile

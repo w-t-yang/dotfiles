@@ -25,12 +25,13 @@ git clone git@github.com:winterock/dotfiles.git
 
 Move dotfiles to home folder
 ```
-mv dotfiles/.* ~/
+mv dotfiles ~/.wy
 ```
 
-Ignore untracked files
+Copy emacs and zsh example config to home folder
 ```
-git config --local status.showUntrackedFiles no
+cp ~/.wy/examples/.emacs ~/.emacs
+cp ~/.wy/examples/.zshrc ~/.zshrc
 ```
 
 
