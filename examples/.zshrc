@@ -1,1 +1,1 @@
-source ~/.wy/profile
+source ~/.wy/sh/profile
