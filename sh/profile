@@ -7,24 +7,11 @@ alias ls='gls --color=always'
 alias dir='gdir --color=auto'
 alias grep='grep --color=auto'
 
-# Set up prompt
-if [ -f ~/.wy/sh/git-prompt.sh ]; then
-    . ~/.wy/sh/git-prompt.sh
-    GIT_PS1_SHOWCOLORHINTS=1
-    setopt PROMPT_SUBST ; PS1='[%c$(__git_ps1 " (%s)")]\$ '
-    # setopt PROMPT_SUBST ; PS1='[%~$(__git_ps1 " (%s)")]\$ '
-fi
-
 # After install coreutils
 PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 eval "$(pyenv init -)"
 eval "$(rbenv init - zsh)"
-
-# tmux
-alias ta="tmux attach"
-alias tl="tmux list-sessions"
-# tmux end
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -32,92 +19,16 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-
 alias npm="pnpm"
-
-# git
-alias g-add="git add"
-alias g-commit="git commit -m"
-alias g-diff-cached="git diff --cached"
-alias g-diff="git diff"
-alias g-log-all="git log"
-alias g-log="git log -n 3"
-alias g-pull="git pull"
-alias g-rebase="git pull --rebase"
-alias g-status="git status"
-wy_branch_options() {
-    git branch | grep -v '*' \
-        | awk '{printf "  %d) %s\n", NR, $1;}'
-}
-
-wy_branch_index_to_name() {
-    if [ -z $1 ]
-    then
-        return
-    fi
-
-    branches=($(git branch | grep -v '*'))
-    declare -i i=1
-    for b in "$branches[@]"
-    do
-        if [ "$i" = "$1" ]
-        then
-            echo "$b"
-        fi
-        i+=1
-    done
-}
-
-wy_branch() {
-    git branch
-    read action\?"checkout(c), new branch(n), delete(d): "
-
-    if [ -z $action ]
-    then
-        return
-    elif [ $action = "n" ]
-    then
-        read name\?"Enter new branch name: "
-        git checkout -b $name
-    elif [ $action = "c" ]
-    then
-        wy_branch_options
-        read option\?"Select branch to checkout: "
-        name=$(wy_branch_index_to_name $option)
-
-        if [ -z $name ]
-        then
-            return
-        fi
-
-        git checkout $name
-    elif [ $action = "d" ]
-    then
-        wy_branch_options
-        read option\?"Select branch to delete: "
-        name=$(wy_branch_index_to_name $option)
-
-        if [ -z $name ]
-        then
-            return
-        fi
-
-        if [ "$name" = "trunk" ] || [ "$name" = "master" ] || [ "$name" = "main" ]
-        then
-            echo "Cannot delete branch $name."
-        else
-            git branch -D $name
-        fi
-    fi
-}
-
-alias g-branch="wy_branch"
-
-wy_push(){
-    name=($(whoami))
-    branch=($(git branch | grep "*" | awk '{print $2}'))
-    echo "Pushing local \"$branch\" -> remote \"$name/$branch\""
-    git push -u origin "$branch":"$name/$branch"
-}
-alias g-push="wy_push"
 # pnpm end
+
+source ~/.wy/sh/git.sh
+source ~/.wy/sh/alias.sh
+
+# Set up prompt
+if [ -f ~/.wy/sh/git-prompt.sh ]; then
+    . ~/.wy/sh/git-prompt.sh
+    GIT_PS1_SHOWCOLORHINTS=1
+    setopt PROMPT_SUBST ; PS1='[%c$(__git_ps1 " (%s)")]\$ '
+    # setopt PROMPT_SUBST ; PS1='[%~$(__git_ps1 " (%s)")]\$ '
+fi
