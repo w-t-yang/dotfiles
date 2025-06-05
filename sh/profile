@@ -24,6 +24,9 @@ alias npm="pnpm"
 
 source ~/.wy/sh/git.sh
 source ~/.wy/sh/alias.sh
+source ~/.wy/sh/cody.sh
+source ~/.wy/sh/jira.sh
+source ~/.wy/sh/bk.sh
 
 # Set up prompt
 if [ -f ~/.wy/sh/git-prompt.sh ]; then

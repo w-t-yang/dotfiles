@@ -26,11 +26,42 @@ wy_branch_push(){
     branch=($(git branch | grep "*" | awk '{print $2}'))
     echo "Pushing local \"$branch\" -> remote \"$name/$branch\""
     git push -u origin "$branch":"$name/$branch"
+
+    # msg=($(git push -u origin "$branch":"$name/$branch"))
+    # echo $msg
+    # url=$(echo $msg | grep "new?merge_request" | sed "s/remote:   //g")
+
+    # echo $url
+    # if [ -z $url ]
+    # then
+    #     return
+    # fi
+
+    # read option\?"Press 'y' to open the link to create MR: "
+    # if [ "$option" = "y" ]
+    # then
+    #     open "$url"
+    # fi
+}
+
+wy_branch_delete() {
+    name=$1
+    if [ -z $name ]
+    then
+        return
+    fi
+
+    if [ "$name" = "trunk" ] || [ "$name" = "master" ] || [ "$name" = "main" ]
+    then
+        echo "Cannot delete branch $name."
+    else
+        git branch -D $name
+    fi
 }
 
 wy_branch() {
     git branch
-    read action\?"checkout(c), new branch(n), delete(d), push(P): "
+    read action\?"checkout(c), new branch(n), delete(d, da), push(P): "
 
     if [ -z $action ]
     then
@@ -56,18 +87,15 @@ wy_branch() {
         wy_branch_options
         read option\?"Select branch to delete: "
         name=$(wy_branch_index_to_name $option)
-
-        if [ -z $name ]
-        then
-            return
-        fi
-
-        if [ "$name" = "trunk" ] || [ "$name" = "master" ] || [ "$name" = "main" ]
-        then
-            echo "Cannot delete branch $name."
-        else
-            git branch -D $name
-        fi
+        wy_branch_delete $name
+    elif [ $action = "da" ]
+    then
+        branches=($(git branch | grep -v '*'))
+        declare -i i=1
+        for b in "$branches[@]"
+        do
+            wy_branch_delete $b
+        done
     elif [ $action = "P" ]
     then
         wy_branch_push
@@ -134,3 +162,16 @@ alias g-pull="git pull"
 alias g-rebase="git pull --rebase"
 alias g-status="git status"
 alias g-branch="wy_branch"
+
+wy_new_mr() {
+    name=($(whoami))
+    branch=($(git branch | grep "*" | awk '{print $2}'))
+
+    url=$(git config --get remote.origin.url)
+    url=$(echo $url | sed 's/:/\//g' | sed 's/git@/https:\/\//g' | sed 's/\.git/\/-/g')
+    url="$url/merge_requests/new?merge_request%5Bsource_branch%5D=$name%2F$branch"
+
+    # echo "$url"
+    open "$url"
+}
+alias g-new-mr="wy_new_mr"
